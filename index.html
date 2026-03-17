@@ -16,7 +16,7 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --navy:#3A4359;--navy-dark:#2c3350;--navy-darker:#1F1F1F;
+      --navy:#3A4359;--navy-dark:#323a50;--navy-darker:#3A4359;
       --red:#B44444;--white:#fff;--gray:#6b7280;--gray-light:#F9FAFB;
       --font-h:'Playfair Display',Georgia,serif;
       --font-b:'Cinzel',Georgia,serif;
@@ -39,7 +39,7 @@
 
     /* HERO */
     .hero{color:var(--white);padding:120px 0 80px;position:relative;overflow:hidden;background:url('/img/hero/team.png') right center/cover no-repeat;min-height:500px}
-    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(31,42,68,0.92) 0%,rgba(31,42,68,0.7) 50%,rgba(31,42,68,0.3) 100%)}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(58,67,89,0.92) 0%,rgba(58,67,89,0.7) 50%,rgba(58,67,89,0.3) 100%)}
     .hero-content{position:relative;z-index:1}
     .hero-text{max-width:560px}
     .hero h1{font-family:var(--font-h);font-size:2.6rem;line-height:1.2;margin-bottom:16px;font-weight:700}
@@ -52,11 +52,11 @@
     .btn-navy:hover{background:var(--navy);border-color:var(--navy)}
 
     /* ICON BAR - MARQUEE (inside hero zone, same bg) */
-    .icon-bar-hero{background:var(--navy);padding:28px 0;overflow:hidden}
+    .icon-bar-hero{background:var(--navy);padding:32px 0;overflow:hidden;border:none}
     .marquee{overflow:hidden;position:relative}
     .marquee::before,.marquee::after{content:'';position:absolute;top:0;width:60px;height:100%;z-index:2}
-    .marquee::before{left:0;background:linear-gradient(90deg,rgba(31,42,68,0.85),transparent)}
-    .marquee::after{right:0;background:linear-gradient(270deg,rgba(31,42,68,0.85),transparent)}
+    .marquee::before{left:0;background:linear-gradient(90deg,var(--navy),transparent)}
+    .marquee::after{right:0;background:linear-gradient(270deg,var(--navy),transparent)}
     .marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content}
     @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     .marquee:hover .marquee-track{animation-play-state:paused}
