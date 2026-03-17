@@ -51,18 +51,18 @@
     .btn-navy{background:var(--navy-darker);color:var(--white);border:2px solid var(--navy-darker)}
     .btn-navy:hover{background:var(--navy);border-color:var(--navy)}
 
-    /* ICON BAR - MARQUEE */
-    .icon-bar{background:var(--white);padding:32px 0;border-bottom:1px solid #eee;overflow:hidden}
+    /* ICON BAR - MARQUEE (inside hero zone) */
+    .icon-bar-hero{background:rgba(31,42,68,0.85);padding:28px 0;overflow:hidden}
     .marquee{overflow:hidden;position:relative}
-    .marquee::before,.marquee::after{content:'';position:absolute;top:0;width:80px;height:100%;z-index:2}
-    .marquee::before{left:0;background:linear-gradient(90deg,var(--white),transparent)}
-    .marquee::after{right:0;background:linear-gradient(270deg,var(--white),transparent)}
+    .marquee::before,.marquee::after{content:'';position:absolute;top:0;width:60px;height:100%;z-index:2}
+    .marquee::before{left:0;background:linear-gradient(90deg,rgba(31,42,68,0.85),transparent)}
+    .marquee::after{right:0;background:linear-gradient(270deg,rgba(31,42,68,0.85),transparent)}
     .marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content}
     @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     .marquee:hover .marquee-track{animation-play-state:paused}
-    .icon-bar-item{text-align:center;width:120px;flex-shrink:0;padding:0 16px}
+    .icon-bar-item{text-align:center;width:130px;flex-shrink:0;padding:0 16px}
     .icon-bar-item img{width:56px;height:56px;margin:0 auto 8px;object-fit:contain}
-    .icon-bar-item span{font-size:0.7rem;color:var(--navy);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;display:block;line-height:1.3}
+    .icon-bar-item span{font-size:0.68rem;color:var(--white);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;display:block;line-height:1.3;font-family:var(--font-b)}
 
     /* SECTIONS */
     .section{padding:80px 0}
@@ -219,27 +219,27 @@
   </div>
 </section>
 
-<!-- ICON BAR - Marquee -->
-<section class="icon-bar">
+<!-- ICON BAR inside hero area -->
+<section class="icon-bar-hero">
   <div class="marquee">
     <div class="marquee-track">
-      <div class="icon-bar-item"><img src="/img/icons/service-1.png" alt=""><span>Dokumenten&shy;pr&uuml;fung</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-2.png" alt=""><span>Kaufvertrag &amp; Notar</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-3.png" alt=""><span>Steuern &amp; Abgaben</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-4.png" alt=""><span>Finanzierung &amp; Konto</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-5.png" alt=""><span>Vertretung</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-6.png" alt=""><span>Juristische Begleitung</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-7.png" alt=""><span>Service auf Deutsch</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-8.png" alt=""><span>Objekt&shy;pr&uuml;fung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/15.svg" alt=""><span>Finanzierung &amp; Kontoer&ouml;ffnung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/16.svg" alt=""><span>Vertretung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/17.svg" alt=""><span>Juristische Begleitung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/18.svg" alt=""><span>Service auf Deutsch</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/19.svg" alt=""><span>Objekt&shy;pr&uuml;fung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/20.svg" alt=""><span>Dokumenten&shy;pr&uuml;fung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/21.svg" alt=""><span>Kaufvertrag &amp; Notar</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/22.svg" alt=""><span>Steuern &amp; Abgaben</span></div>
       <!-- Duplicate for infinite scroll -->
-      <div class="icon-bar-item"><img src="/img/icons/service-1.png" alt=""><span>Dokumenten&shy;pr&uuml;fung</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-2.png" alt=""><span>Kaufvertrag &amp; Notar</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-3.png" alt=""><span>Steuern &amp; Abgaben</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-4.png" alt=""><span>Finanzierung &amp; Konto</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-5.png" alt=""><span>Vertretung</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-6.png" alt=""><span>Juristische Begleitung</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-7.png" alt=""><span>Service auf Deutsch</span></div>
-      <div class="icon-bar-item"><img src="/img/icons/service-8.png" alt=""><span>Objekt&shy;pr&uuml;fung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/15.svg" alt=""><span>Finanzierung &amp; Kontoer&ouml;ffnung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/16.svg" alt=""><span>Vertretung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/17.svg" alt=""><span>Juristische Begleitung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/18.svg" alt=""><span>Service auf Deutsch</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/19.svg" alt=""><span>Objekt&shy;pr&uuml;fung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/20.svg" alt=""><span>Dokumenten&shy;pr&uuml;fung</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/21.svg" alt=""><span>Kaufvertrag &amp; Notar</span></div>
+      <div class="icon-bar-item"><img src="/img/bar/22.svg" alt=""><span>Steuern &amp; Abgaben</span></div>
     </div>
   </div>
 </section>
