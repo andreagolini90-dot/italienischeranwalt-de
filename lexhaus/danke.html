@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vielen Dank! — LexHaus</title>
+  <link rel="icon" type="image/png" href="lexhaus-logo.png">
+
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2292692314491150');
+  fbq('track', 'PageView');
+  fbq('track', 'Purchase', {
+    value: 29.99,
+    currency: 'EUR',
+    content_name: 'LexHaus Toolkit',
+    content_type: 'product'
+  });
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2292692314491150&ev=PageView&noscript=1"/></noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #001431;
+      --gold: #B8A472;
+      --gold-light: #d4c89a;
+      --white: #ffffff;
+      --text-muted: rgba(255,255,255,0.6);
+      --radius: 16px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans 3', 'Trebuchet MS', sans-serif;
+      background: linear-gradient(160deg, #000c1f 0%, var(--primary) 45%, #0a2a4a 85%, #1a1a2e 100%);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container { max-width: 640px; text-align: center; }
+
+    .checkmark {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 32px;
+      animation: pop 0.5s ease-out;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .checkmark svg { width: 40px; height: 40px; }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(184,164,114,0.2);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .card h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    .step {
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;
+    }
+    .step:last-child { margin-bottom: 0; }
+
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--gold); color: var(--primary);
+      font-weight: 700; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 1.05rem; line-height: 1.5; padding-top: 4px;
+    }
+
+    /* Password box — big and clear */
+    .pw-box {
+      background: rgba(184,164,114,0.12);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .pw-box .pw-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .pw-box .pw-value {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 2px;
+      user-select: all;
+    }
+
+    .pw-box .pw-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--primary);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 18px 44px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s;
+      margin-bottom: 12px;
+    }
+    .btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(184,164,114,0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-size: 1rem;
+      padding: 14px 32px;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.18);
+      box-shadow: none;
+    }
+
+    .buttons { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 32px; }
+
+    /* PWA instructions */
+    .pwa-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .pwa-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .pwa-card ol {
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+    }
+
+    .pwa-card .pwa-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 24px;
+      line-height: 1.6;
+    }
+
+    .logo { margin-top: 40px; opacity: 0.5; }
+    .logo img { height: 40px; }
+
+    @media (max-width: 480px) {
+      .pw-box .pw-value { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="checkmark">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="#001431"/>
+      </svg>
+    </div>
+
+    <h1>Vielen Dank f&uuml;r Ihren Kauf!</h1>
+    <p class="subtitle">LexHaus steht ab sofort f&uuml;r Sie bereit. Hier ist alles, was Sie brauchen:</p>
+
+    <!-- PASSWORD — big and visible -->
+    <div class="pw-box">
+      <div class="pw-label">Ihr Zugangspasswort</div>
+      <div class="pw-value">LexHaus2026</div>
+      <div class="pw-hint">Bitte notieren Sie sich dieses Passwort. Sie ben&ouml;tigen es beim ersten &Ouml;ffnen.</div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="card">
+      <h2>So geht es weiter</h2>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Klicken Sie auf <strong>&bdquo;LexHaus &ouml;ffnen&ldquo;</strong> und geben Sie das Passwort oben ein.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">Laden Sie den <strong>Leitfaden (PDF)</strong> herunter &mdash; er ist in Ihrem Kauf enthalten.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Speichern Sie LexHaus als <strong>App auf dem Smartphone</strong> (Anleitung unten).</div>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+      <a href="app/" class="btn">LexHaus &ouml;ffnen &rarr;</a>
+      <a href="app/leitfaden-7-fehler.pdf" target="_blank" rel="noopener" class="btn btn-secondary">Leitfaden &ouml;ffnen (PDF)</a>
+    </div>
+
+    <!-- PWA INSTRUCTIONS -->
+    <div class="pwa-card">
+      <h3>LexHaus als App speichern</h3>
+      <ol>
+        <li>&Ouml;ffnen Sie LexHaus in <strong>Safari</strong> (iPhone) oder <strong>Chrome</strong> (Android)</li>
+        <li>Tippen Sie auf das <strong>Teilen-Symbol</strong> (iPhone) oder die <strong>drei Punkte</strong> (Android)</li>
+        <li>W&auml;hlen Sie <strong>&bdquo;Zum Home-Bildschirm&ldquo;</strong></li>
+        <li>LexHaus erscheint als App-Icon &mdash; immer griffbereit</li>
+      </ol>
+      <div class="pwa-note">Wichtig: Auf dem iPhone funktioniert dies nur in Safari, nicht in Chrome.</div>
+    </div>
+
+    <p class="note">
+      Bei Fragen erreichen Sie uns jederzeit &uuml;ber den Kontakt-Tab in LexHaus.<br>
+      Eine Zahlungsbest&auml;tigung wurde an Ihre E-Mail-Adresse gesendet.
+    </p>
+
+    <div class="logo">
+      <img src="logo-golini-header.svg" alt="Studio Legale Golini">
+    </div>
+  </div>
+</body>
+</html>

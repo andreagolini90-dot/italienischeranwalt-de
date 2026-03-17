@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Italienischer Anwalt — Immobilienkauf in Italien | Studio Legale Golini</title>
+  <meta name="description" content="Kaufen Sie Immobilien in Italien mit juristischer Begleitung auf Deutsch. Vom ersten Gespräch bis zur Eigentumsübertragung — Studio Legale Golini, Pescara & Rom.">
+  <meta property="og:title" content="Italienischer Anwalt — Immobilienkauf in Italien">
+  <meta property="og:description" content="Juristische Begleitung beim Immobilienkauf in Italien. Kompletter Service auf Deutsch.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://italienischeranwalt.de">
+  <meta property="og:locale" content="de_DE">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #001431;
+      --navy-light: #0a2040;
+      --gold: #B8A472;
+      --gold-light: #d4c8a0;
+      --white: #ffffff;
+      --gray: #6b7280;
+      --gray-light: #f3f4f6;
+      --red: #ab2d32;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: #333; line-height: 1.7; background: var(--white); }
+    a { color: var(--gold); text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* NAV */
+    .nav { background: var(--navy); padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { height: 40px; }
+    .nav-links { display: flex; list-style: none; gap: 28px; }
+    .nav-links a { color: var(--white); font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+    /* CONTAINER */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 80px 0; }
+    .section-dark { background: var(--navy); color: var(--white); }
+    .section-light { background: var(--gray-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: var(--white); padding: 80px 0 60px; text-align: center; }
+    .hero h1 { font-family: var(--font-heading); font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { font-size: 1.2rem; color: #ccc; max-width: 600px; margin: 0 auto 32px; }
+    .hero-gallery { display: flex; gap: 8px; overflow: hidden; margin-top: 40px; border-radius: 12px; }
+    .hero-gallery img { width: 25%; height: 180px; object-fit: cover; border-radius: 8px; }
+
+    /* BUTTONS */
+    .btn { display: inline-block; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline { border: 2px solid var(--gold); color: var(--gold); background: transparent; }
+    .btn-outline:hover { background: var(--gold); color: var(--navy); }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+    .service-card { background: var(--white); border-radius: 12px; padding: 32px 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid var(--gold); }
+    .service-card h3 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 10px; color: var(--navy); }
+    .service-card p { font-size: 0.95rem; color: var(--gray); }
+
+    /* VORTEILE */
+    .vorteile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 40px; }
+    .vorteil { text-align: center; padding: 24px; }
+    .vorteil-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .vorteil h3 { font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 8px; }
+    .vorteil p { font-size: 0.9rem; color: var(--gray); }
+
+    /* STEPS */
+    .steps { counter-reset: step; }
+    .step { display: flex; gap: 24px; margin-bottom: 32px; align-items: flex-start; }
+    .step::before { counter-increment: step; content: counter(step); background: var(--gold); color: var(--navy); width: 44px; height: 44px; min-width: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; }
+    .step-content h3 { font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 6px; }
+    .step-content p { font-size: 0.95rem; color: var(--gray); }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px; }
+    .testimonial { background: rgba(255,255,255,0.05); border: 1px solid rgba(184,164,114,0.2); border-radius: 12px; padding: 28px; }
+    .testimonial p { font-style: italic; font-size: 0.95rem; margin-bottom: 16px; line-height: 1.7; color: #ddd; }
+    .testimonial-author { color: var(--gold); font-weight: 700; font-size: 0.9rem; }
+
+    /* STATS */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; margin-top: 40px; }
+    .stat-number { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; color: var(--gold); }
+    .stat-label { font-size: 0.9rem; color: var(--gray); margin-top: 4px; }
+
+    /* SECTION TITLES */
+    .section-title { font-family: var(--font-heading); font-size: 2rem; text-align: center; margin-bottom: 16px; }
+    .section-title span { color: var(--gold); }
+    .section-subtitle { text-align: center; font-size: 1.05rem; color: var(--gray); max-width: 600px; margin: 0 auto; }
+    .section-dark .section-subtitle { color: #aaa; }
+
+    /* PRESSE */
+    .presse-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+    .presse-card { background: var(--white); border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .presse-card h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--navy); }
+    .presse-card p { font-size: 0.9rem; color: var(--gray); margin-bottom: 12px; }
+    .presse-card .presse-source { font-size: 0.8rem; color: var(--gold); font-weight: 600; }
+
+    /* KONTAKT */
+    .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+    .kontakt-info h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 16px; }
+    .kontakt-item { display: flex; gap: 12px; margin-bottom: 16px; font-size: 0.95rem; }
+    .kontakt-item strong { color: var(--navy); }
+    .kontakt-form input, .kontakt-form textarea, .kontakt-form select {
+      width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 8px; font-family: var(--font-body);
+      font-size: 1rem; margin-bottom: 12px; background: var(--white);
+    }
+    .kontakt-form textarea { resize: vertical; min-height: 100px; }
+
+    /* LEXHAUS CTA */
+    .lexhaus-banner { background: linear-gradient(135deg, var(--navy) 0%, #0d2d50 100%); border: 2px solid var(--gold); border-radius: 16px; padding: 40px; text-align: center; margin-top: 40px; }
+    .lexhaus-banner h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--white); margin-bottom: 12px; }
+    .lexhaus-banner p { color: #ccc; margin-bottom: 20px; }
+
+    /* FOOTER */
+    .footer { background: var(--navy); color: var(--gray); padding: 40px 0 24px; font-size: 0.85rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+    .footer h4 { color: var(--white); font-size: 0.95rem; margin-bottom: 12px; }
+    .footer a { color: var(--gray); transition: color 0.2s; }
+    .footer a:hover { color: var(--gold); }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 1rem; }
+      .hero-gallery { flex-wrap: wrap; }
+      .hero-gallery img { width: 48%; height: 120px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--navy); padding: 20px; gap: 16px; }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+      .section { padding: 48px 0; }
+      .section-title { font-size: 1.5rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .stat-number { font-size: 2rem; }
+      .kontakt-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .step { flex-direction: column; align-items: center; text-align: center; }
+      .btn { padding: 12px 32px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <a href="/"><img src="/img/logo-white.png" alt="Studio Legale Golini" class="nav-logo"></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#ablauf">Ablauf</a></li>
+      <li><a href="#erfahrungen">Erfahrungen</a></li>
+      <li><a href="#presse">Presse</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>Juristische Begleitung beim <span>Immobilienkauf in Italien</span></h1>
+    <p>Kompletter Service auf Deutsch &mdash; von der Pr&uuml;fung der Unterlagen bis zum Notartermin.</p>
+    <a href="#kontakt" class="btn btn-gold">Kontakt aufnehmen</a>
+    <div class="hero-gallery">
+      <img src="/img/5e186a45-b17b-44e5-a47f-4742b458f1ba.jpg" alt="Immobilien Italien" loading="lazy">
+      <img src="/img/bd876e19-b39d-40f0-958b-825fafa820f3.jpg" alt="Haus in Italien" loading="lazy">
+      <img src="/img/c43fb3bd-629c-4681-9d7f-bf6593d60c96.jpg" alt="Villa Italien" loading="lazy">
+      <img src="/img/6ff0a3e9-0072-4209-8f4d-932ece95590c.jpg" alt="Immobilie kaufen" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- VORTEILE -->
+<section class="section" id="vorteile">
+  <div class="container">
+    <h2 class="section-title">Warum mit einem <span>italienischen Anwaltsb&uuml;ro</span> kaufen?</h2>
+    <p class="section-subtitle">Vorteile f&uuml;r ausl&auml;ndische K&auml;ufer</p>
+    <div class="vorteile-grid">
+      <div class="vorteil">
+        <div class="vorteil-icon">&euro;</div>
+        <h3>Transparente Kosten</h3>
+        <p>Keine versteckten Geb&uuml;hren &mdash; alle Kosten werden im Voraus erkl&auml;rt.</p>
+      </div>
+      <div class="vorteil">
+        <div class="vorteil-icon">&#128101;</div>
+        <h3>Keine Maklerprovision</h3>
+        <p>Direkter Kauf ohne Zwischenh&auml;ndler oder Agenturen.</p>
+      </div>
+      <div class="vorteil">
+        <div class="vorteil-icon">&#9878;</div>
+        <h3>Juristische Sicherheit</h3>
+        <p>Rechtliche Pr&uuml;fung und Begleitung in jeder Phase.</p>
+      </div>
+      <div class="vorteil">
+        <div class="vorteil-icon">&#127465;&#127466;</div>
+        <h3>Service auf Deutsch</h3>
+        <p>Kommunikation und Dokumentation vollst&auml;ndig auf Deutsch.</p>
+      </div>
+      <div class="vorteil">
+        <div class="vorteil-icon">&#10003;</div>
+        <h3>Von Anfang bis &Uuml;bergabe</h3>
+        <p>Wir bleiben an Ihrer Seite &mdash; von der Pr&uuml;fung bis zur Eigentums&uuml;bertragung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section class="section section-light" id="leistungen">
+  <div class="container">
+    <h2 class="section-title">Unsere <span>Leistungen</span></h2>
+    <p class="section-subtitle">Juristische Beratung und vollst&auml;ndige Betreuung &mdash; vom ersten Dokument bis zur Eigentums&uuml;bertragung.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Rechtliche Begleitung</h3>
+        <p>Wir begleiten Sie rechtlich bei jedem Schritt &mdash; Vertragspr&uuml;fung, Grundbuchanalyse, Risikopr&uuml;fung.</p>
+      </div>
+      <div class="service-card">
+        <h3>Finanzielle Beratung</h3>
+        <p>Wir begleiten Sie bei allen finanziellen Schritten &mdash; Steuern, Geb&uuml;hren, Bankkonten in Italien.</p>
+      </div>
+      <div class="service-card">
+        <h3>Steuerliche Aspekte</h3>
+        <p>Wir k&uuml;mmern uns um alle steuerlichen Aspekte &mdash; Registersteuer, Katastersteuer, Hypothekensteuer.</p>
+      </div>
+      <div class="service-card">
+        <h3>Vertretung in Italien</h3>
+        <p>Wir vertreten Sie in Italien &mdash; mit Vollmacht, Notartermin und Eigentums&uuml;bertragung.</p>
+      </div>
+      <div class="service-card">
+        <h3>Immobilienauktionen</h3>
+        <p>Kauf von Immobilien bei Zwangsversteigerungen &mdash; mit juristischer Begleitung und Analyse der Gutachten.</p>
+      </div>
+      <div class="service-card">
+        <h3>Nachbetreuung</h3>
+        <p>Nach dem Kauf bleiben wir an Ihrer Seite &mdash; Versorgungsvertr&auml;ge, Katastereintr&auml;ge, Hausverwaltung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABLAUF -->
+<section class="section" id="ablauf">
+  <div class="container">
+    <h2 class="section-title">Schritt f&uuml;r Schritt zum <span>Immobilienkauf</span></h2>
+    <p class="section-subtitle">So einfach l&auml;uft der Kaufprozess mit uns ab.</p>
+    <div class="steps" style="margin-top:40px;max-width:700px;margin-left:auto;margin-right:auto;">
+      <div class="step">
+        <div class="step-content">
+          <h3>Erstes Gespr&auml;ch auf Deutsch</h3>
+          <p>Wir erkl&auml;ren Ihnen den gesamten Ablauf, pr&uuml;fen Ihre W&uuml;nsche und beantworten Ihre ersten Fragen.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <h3>Pr&uuml;fung aller Unterlagen</h3>
+          <p>Wir analysieren Grundbuch, Lasten und Risiken &mdash; damit Sie sicher kaufen k&ouml;nnen.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <h3>Codice Fiscale &amp; Bankkonto</h3>
+          <p>Wir k&uuml;mmern uns um Codice Fiscale und Kontoer&ouml;ffnung &mdash; alles vorbereitet, ohne italienische B&uuml;rokratie.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <h3>Vollmacht &amp; Vorbereitung</h3>
+          <p>Mit Ihrer Vollmacht k&uuml;mmern wir uns um alle Schritte in Italien &mdash; sicher und transparent.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <h3>Notartermin mit Begleitung</h3>
+          <p>Wir begleiten Sie zum Notar &mdash; mit &Uuml;bersetzung, Erkl&auml;rung und juristischer Sicherheit.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <h3>&Uuml;bergabe &amp; Nachbetreuung</h3>
+          <p>Nach dem Notartermin bleiben Sie nicht allein &mdash; wir begleiten Sie auch nach der &Uuml;bergabe.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="#kontakt" class="btn btn-gold">Kontakt aufnehmen</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-dark" id="erfahrungen">
+  <div class="container">
+    <h2 class="section-title">Das sagen unsere <span>Mandanten</span></h2>
+    <p class="section-subtitle">Echte Erfahrungen von K&auml;ufern, die mit uns ihr Haus in Italien gefunden haben.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p>&laquo;Mir war wichtig, dass alles rechtlich sicher l&auml;uft. Die Anw&auml;lte haben jede Unterlage gepr&uuml;ft und mir erkl&auml;rt, welche Steuern anfallen. Ich hatte immer einen festen Ansprechpartner &mdash; auf Deutsch!&raquo;</p>
+        <div class="testimonial-author">Michael R., M&uuml;nchen</div>
+      </div>
+      <div class="testimonial">
+        <p>&laquo;Ich hatte keine Erfahrung mit dem Immobilienkauf in Italien. Die Kanzlei hat mir alles Schritt f&uuml;r Schritt erkl&auml;rt. Heute habe ich endlich mein Haus in den Abruzzen &mdash; ohne Stress!&raquo;</p>
+        <div class="testimonial-author">Klaus D., D&uuml;sseldorf</div>
+      </div>
+      <div class="testimonial">
+        <p>&laquo;Ich konnte nicht nach Italien reisen &mdash; alles lief online. Das Studio hat sich um alles gek&uuml;mmert: Codice Fiscale, Vollmacht, Notartermin. Ich f&uuml;hlte mich immer gut informiert.&raquo;</p>
+        <div class="testimonial-author">Anna B., Frankfurt</div>
+      </div>
+      <div class="testimonial">
+        <p>&laquo;Wir wollten ein Ferienhaus an der Adria. &Uuml;ber die Kanzlei fanden wir ein Objekt, pr&uuml;ften alle Dokumente und unterschrieben beim Notar. Alles lief reibungslos!&raquo;</p>
+        <div class="testimonial-author">Familie Schmidt, Hannover</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Begleitete Immobilienk&auml;ufe</div>
+      </div>
+      <div>
+        <div class="stat-number">240+</div>
+        <div class="stat-label">Internationale Klienten</div>
+      </div>
+      <div>
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Jahre Erfahrung</div>
+      </div>
+      <div>
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Erfolgsquote</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESSE -->
+<section class="section section-light" id="presse">
+  <div class="container">
+    <h2 class="section-title"><span>Presse</span> &amp; Medien</h2>
+    <p class="section-subtitle">Berichte und Erw&auml;hnungen in den Medien.</p>
+    <div class="presse-grid">
+      <div class="presse-card">
+        <h3>Immobilienkauf in Italien: Was Ausl&auml;nder wissen m&uuml;ssen</h3>
+        <p>Ein umfassender Leitfaden f&uuml;r deutsche K&auml;ufer &mdash; von der Dokumentenpr&uuml;fung bis zur Eigentums&uuml;bertragung.</p>
+        <span class="presse-source">In K&uuml;rze verf&uuml;gbar</span>
+      </div>
+      <div class="presse-card">
+        <h3>Zwangsversteigerungen in Italien: Chancen f&uuml;r Investoren</h3>
+        <p>Wie Auktionen in Italien funktionieren und warum sie f&uuml;r ausl&auml;ndische Investoren attraktiv sind.</p>
+        <span class="presse-source">In K&uuml;rze verf&uuml;gbar</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEXHAUS BANNER -->
+<section class="section">
+  <div class="container">
+    <div class="lexhaus-banner">
+      <h3>LexHaus &mdash; Ihr Rechts-Kompass</h3>
+      <p>Kostenrechner, Steuerberater und Checkliste f&uuml;r den Immobilienkauf in Italien. Alles in einem Tool.</p>
+      <a href="/lexhaus/" class="btn btn-gold">LexHaus entdecken</a>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="section section-dark" id="kontakt">
+  <div class="container">
+    <h2 class="section-title">Bereit, Ihr Projekt in <span>Italien</span> zu starten?</h2>
+    <div class="kontakt-grid">
+      <div class="kontakt-info">
+        <h3>Unsere Standorte</h3>
+        <div class="kontakt-item">
+          <div>
+            <strong>Pescara</strong><br>
+            Via Nicola Fabrizi 185<br>
+            65122 Pescara (PE)
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div>
+            <strong>Rom</strong><br>
+            Via Sistina 121<br>
+            00187 Roma (RM)
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div>
+            <strong>E-Mail</strong><br>
+            <a href="mailto:info@avvocatogolini.it" style="color:var(--gold)">info@avvocatogolini.it</a>
+          </div>
+        </div>
+        <div class="kontakt-item">
+          <div>
+            <strong>Webseite</strong><br>
+            <a href="https://www.avvocatogolini.it" target="_blank" style="color:var(--gold)">avvocatogolini.it</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form class="kontakt-form" id="contact-form" onsubmit="return sendForm(event)">
+          <input type="text" name="name" placeholder="Ihr Name" required>
+          <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+          <input type="tel" name="telefon" placeholder="Telefonnummer (optional)">
+          <select name="betreff" required>
+            <option value="" disabled selected>Betreff ausw&auml;hlen</option>
+            <option value="Immobilienkauf">Immobilienkauf in Italien</option>
+            <option value="Auktion">Immobilienauktion</option>
+            <option value="Steuerberatung">Steuerberatung</option>
+            <option value="LexHaus">LexHaus Tool</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+          <textarea name="nachricht" placeholder="Ihre Nachricht..." rows="4"></textarea>
+          <button type="submit" class="btn btn-gold" style="width:100%">Nachricht senden</button>
+          <div id="form-status" style="display:none;margin-top:12px;text-align:center;font-size:0.9rem;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="/img/logo-white.png" alt="Studio Legale Golini" style="height:36px;margin-bottom:16px;">
+        <p>Studio Legale Golini &mdash; Juristische Begleitung beim Immobilienkauf in Italien. &Uuml;ber 20 Jahre Erfahrung, vollst&auml;ndiger Service auf Deutsch.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#ablauf">Ablauf</a></li>
+          <li><a href="#erfahrungen">Erfahrungen</a></li>
+          <li><a href="#presse">Presse</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul class="footer-links">
+          <li><a href="/impressum.html">Impressum</a></li>
+          <li><a href="/datenschutz.html">Datenschutz</a></li>
+          <li><a href="/agb.html">AGB</a></li>
+          <li><a href="/lexhaus/">LexHaus Tool</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Studio Legale Golini &mdash; Pescara &bull; Roma &mdash; <a href="/impressum.html">Impressum</a> &bull; <a href="/datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav toggle
+document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+  document.querySelector('.nav-links').classList.toggle('active');
+});
+// Close nav on link click (mobile)
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('active'));
+});
+
+// Form submit
+async function sendForm(e) {
+  e.preventDefault();
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  const btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Wird gesendet...';
+  try {
+    const data = {
+      nome: form.name.value,
+      email: form.email.value,
+      telefono: form.telefon.value,
+      oggetto: form.betreff.value,
+      messaggio: form.nachricht.value,
+      pagina: 'italienischeranwalt.de'
+    };
+    const resp = await fetch('https://trovaaste-production.up.railway.app/api/contatti', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!resp.ok) throw new Error();
+    status.style.display = 'block';
+    status.style.color = '#4ade80';
+    status.textContent = 'Nachricht gesendet! Wir melden uns in K\u00FCrze.';
+    form.reset();
+  } catch (err) {
+    status.style.display = 'block';
+    status.style.color = '#ef4444';
+    status.textContent = 'Fehler beim Senden. Bitte versuchen Sie es erneut.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Nachricht senden';
+  }
+}
+</script>
+</body>
+</html>
