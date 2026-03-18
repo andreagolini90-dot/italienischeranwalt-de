@@ -27,7 +27,7 @@
       --accent: #ffffff;
       --accent-hover: #e0e0e0;
       --white: #ffffff;
-      --bg: #3A4359;
+      --bg: #001431;
       --bg-light: #454d66;
       --gray-50: #F9FAFB;
       --gray-100: #f3f4f6;
@@ -1377,18 +1377,16 @@
   <!-- ============================================================
        1. HEADER
        ============================================================ -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#hero" class="header-logo">
-        <img src="logo-golini-header.svg" alt="Studio Legale Golini">
-      </a>
-      <button class="mobile-menu-btn" onclick="document.querySelector('.header-nav').classList.toggle('open')" aria-label="Menu">&#9776;</button>
-      <nav class="header-nav">
-        <a href="#tools">LexHaus</a>
-        <a href="#tools" onclick="switchTab('kontakt')">Kontakt</a>
-      </nav>
+  <nav style="background:#001431;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100">
+    <a href="/"><img src="/img/logo-nav.svg" alt="Studio Legale Golini" style="height:50px"></a>
+    <div style="display:flex;gap:18px;align-items:center">
+      <a href="/" style="color:#fff;font-size:0.75rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;text-decoration:none">Home</a>
+      <a href="/zwangsversteigerungen/" style="color:#fff;font-size:0.75rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;text-decoration:none">Aste</a>
+      <a href="/1-euro-haeuser/" style="color:#fff;font-size:0.75rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;text-decoration:none">1-Euro</a>
+      <a href="/lexhaus/" style="color:#fff;font-size:0.75rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;text-decoration:none">LexHaus</a>
+      <a href="/#kontakt" style="color:#fff;font-size:0.75rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;text-decoration:none">Kontakt</a>
     </div>
-  </header>
+  </nav>
 
   <!-- ============================================================
        2. HERO
