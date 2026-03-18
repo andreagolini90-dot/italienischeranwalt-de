@@ -30,7 +30,9 @@
       .nav-toggle{display:block}
     }
 
-    .hero{background:var(--navy);padding:120px 0 80px;text-align:center}
+    .hero{background:url('hero-v3.png') center center/cover no-repeat;background-color:var(--navy);padding:120px 0 80px;text-align:center;position:relative}
+    .hero::before{content:'';position:absolute;inset:0;background:rgba(0,20,49,0.75)}
+    .hero *{position:relative;z-index:1}
     .hero h1{font-family:var(--font-h);font-size:2.8rem;margin-bottom:20px;font-weight:700}
     .hero h1 span{color:rgba(184,164,114,0.9)}
     .hero p{font-size:0.9rem;color:rgba(255,255,255,0.7);max-width:650px;margin:0 auto 16px;line-height:1.8}

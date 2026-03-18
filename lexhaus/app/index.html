@@ -1385,24 +1385,8 @@
   </div>
 
   <script>
-  (function(){
-    var VALID_HASH = '5447563453474631637a49774d6a593d';
-    function simpleHash(s){return Array.from(s).map(function(c){return c.charCodeAt(0).toString(16)}).join('');}
-    function toHex(s){return Array.from(btoa(s)).map(function(c){return c.charCodeAt(0).toString(16)}).join('');}
-    if(localStorage.getItem('lexhaus_auth')==='true'){
-      document.getElementById('pw-gate').classList.add('hidden');
-    }
-    window.checkPw=function(){
-      var val=document.getElementById('pw-input').value.trim();
-      if(toHex(val)===VALID_HASH){
-        localStorage.setItem('lexhaus_auth','true');
-        document.getElementById('pw-gate').classList.add('hidden');
-      } else {
-        document.getElementById('pw-error').textContent='Falsches Passwort. Bitte versuchen Sie es erneut.';
-        document.getElementById('pw-input').value='';
-      }
-    };
-  })();
+  // Password gate removed — free access
+  document.getElementById('pw-gate').classList.add('hidden');
   </script>
 
   <!-- ============================================================
