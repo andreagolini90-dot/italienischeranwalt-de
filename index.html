@@ -28,7 +28,7 @@
     img{max-width:100%;height:auto;display:block}
 
     /* NAV */
-    .nav{background:transparent;padding:14px 0;position:absolute;top:0;left:0;right:0;z-index:100}
+    .nav{background:var(--navy);padding:14px 0;position:relative;z-index:100}
     .nav .container{display:flex;align-items:center;justify-content:space-between}
     .nav-logo{height:60px}
     .nav-links{display:flex;list-style:none;gap:20px}
@@ -44,8 +44,7 @@
 
     /* HERO */
     .hero{color:var(--white);position:relative;overflow:hidden;background:url('/img/hero/team.png') 70% 60%/cover no-repeat;background-color:var(--navy);min-height:100vh;display:flex;align-items:center;padding:250px 0 200px}
-    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,20,49,0.92) 0%,rgba(0,20,49,0.7) 50%,rgba(0,20,49,0.3) 100%)}
-    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,20,49,0.92) 0%,rgba(0,20,49,0.7) 50%,rgba(0,20,49,0.3) 100%)}
+    .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,20,49,0.7) 0%,rgba(0,20,49,0.4) 50%,rgba(0,20,49,0.15) 100%)}
     .hero-content{position:relative;z-index:1}
     .hero-text{max-width:100%}
     .hero h1{font-family:var(--font-h);font-size:2.6rem;line-height:1.2;margin-bottom:16px;font-weight:700}
