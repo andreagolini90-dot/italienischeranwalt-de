@@ -85,7 +85,1362 @@
       .fehler-grid{grid-template-columns:1fr}
       .footer-grid{grid-template-columns:1fr}
     }
-  </style>
+  
+/* === LEXHAUS APP CSS === */
+
+    /* ============================================================
+       CSS VARIABLES & RESET
+       ============================================================ */
+    :root {
+      --primary: #3A4359;
+      --primary-light: #4d5570;
+      --primary-dark: #2d3447;
+      --accent: #ffffff;
+      --accent-hover: #e0e0e0;
+      --white: #ffffff;
+      --bg: #001431;
+      --bg-light: #454d66;
+      --gray-50: #F9FAFB;
+      --gray-100: #f3f4f6;
+      --gray-200: rgba(255,255,255,0.15);
+      --gray-300: rgba(255,255,255,0.25);
+      --gray-500: rgba(255,255,255,0.7);
+      --gray-700: rgba(255,255,255,0.85);
+      --gray-900: #1F1F1F;
+      --text: #ffffff;
+      --text-muted: rgba(255,255,255,0.7);
+      --red: #dc2626;
+      --green: #16a34a;
+      --orange: #ea580c;
+      --radius: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.12);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================================
+       PASSWORD GATE
+       ============================================================ */
+    #pw-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: linear-gradient(160deg, #000c1f 0%, #001431 45%, #0a2a4a 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+    }
+    #pw-gate.hidden { display: none; }
+    #pw-gate .pw-logo { width: 80px; height: 80px; border-radius: 50%; }
+    #pw-gate h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #fff;
+      text-align: center;
+    }
+    #pw-gate p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      text-align: center;
+      max-width: 360px;
+    }
+    #pw-gate .pw-input-wrap {
+      display: flex;
+      gap: 10px;
+    }
+    #pw-gate input {
+      padding: 14px 20px;
+      border-radius: 50px;
+      border: 1px solid rgba(184,164,114,0.3);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'Cinzel', serif;
+      width: 240px;
+      outline: none;
+    }
+    #pw-gate input::placeholder { color: rgba(255,255,255,0.35); }
+    #pw-gate input:focus { border-color: #B8A472; }
+    #pw-gate button {
+      padding: 14px 28px;
+      border-radius: 50px;
+      border: none;
+      background: #B8A472;
+      color: #001431;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+    }
+    #pw-gate button:hover { background: #d4c89a; }
+    #pw-gate .pw-error {
+      color: #dc2626;
+      font-size: 0.85rem;
+      min-height: 20px;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+    }
+
+    /* ============================================================
+       HEADER (sticky)
+       ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #001431;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 0 24px;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .header-logo img {
+      height: 54px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.7;
+      display: block;
+      line-height: 1.2;
+    }
+    .header-nav {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .header-nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover,
+    .header-nav a.active {
+      color: var(--white);
+    }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero-section {
+      position: relative;
+      text-align: center;
+      padding: 100px 24px 70px;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .hero-section h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .hero-section h1 span {
+      color: var(--accent);
+    }
+    .hero-subheading {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .hero-subtitle {
+      font-size: clamp(0.88rem, 1.5vw, 1rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      max-width: 620px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero-section .btn {
+      font-size: 1.1rem;
+      padding: 16px 40px;
+    }
+
+    /* ============================================================
+       MAIN CONTAINER
+       ============================================================ */
+    .main-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 40px;
+    }
+
+    /* ============================================================
+       TAB NAVIGATION
+       ============================================================ */
+    .tab-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 0;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px 8px 0 0;
+    }
+    .tab-btn {
+      flex: 1 1 auto;
+      min-width: 0;
+      padding: 18px 16px;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--text-muted);
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      margin-bottom: -2px;
+    }
+    .tab-btn:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+    .tab-btn.active {
+      color: var(--text);
+      border-bottom-color: var(--white);
+      background: rgba(255,255,255,0.08);
+    }
+    .tab-panel {
+      display: none;
+      padding: 36px 0;
+      animation: fadeIn 0.3s ease;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* ============================================================
+       FORM ELEMENTS
+       ============================================================ */
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .form-group .help-text {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .form-group input[type="number"],
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-family: 'Cinzel', serif;
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.4);
+    }
+    .form-group select option {
+      background: var(--primary);
+      color: var(--text);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Radio Group */
+    .radio-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 12px 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius);
+      transition: all 0.2s;
+      color: var(--text);
+      font-size: 1rem;
+    }
+    .radio-group label:hover {
+      border-color: var(--accent);
+    }
+    .radio-group input[type="radio"] {
+      accent-color: var(--accent);
+    }
+    .radio-group input[type="radio"]:checked + span {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--primary);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      color: var(--primary);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--primary);
+    }
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* ============================================================
+       RESULTS TABLE
+       ============================================================ */
+    .results {
+      margin-top: 32px;
+      animation: fadeIn 0.3s ease;
+    }
+    .results h2 {
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+    }
+    .results-table th,
+    .results-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .results-table th {
+      background: rgba(255,255,255,0.08);
+      font-weight: 700;
+    }
+    .results-table tr:last-child td {
+      border-bottom: none;
+    }
+    .results-table .total-row {
+      background: rgba(255,255,255,0.15);
+      font-weight: 700;
+    }
+    .results-table .total-row td {
+      border-bottom: none;
+      font-size: 1.05rem;
+    }
+
+    /* ============================================================
+       CARDS
+       ============================================================ */
+    .card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      transition: all 0.2s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      background: rgba(255,255,255,0.12);
+    }
+    .card h3 { color: var(--text) !important; }
+    .card p { color: var(--text-muted) !important; }
+
+    /* ============================================================
+       ACCORDION
+       ============================================================ */
+    .accordion-item {
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.05);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      transition: background 0.2s;
+    }
+    .accordion-header:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .accordion-header .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .accordion-header .step-number.completed {
+      background: var(--green);
+      color: var(--white);
+    }
+    .accordion-header .arrow {
+      transition: transform 0.2s;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .accordion-item.open .accordion-header .arrow {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      display: none;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.03);
+    }
+    .accordion-body p {
+      color: var(--text-muted) !important;
+    }
+    .accordion-item.open .accordion-body {
+      display: block;
+    }
+
+    /* ============================================================
+       CHECKLIST (interactive checkboxes)
+       ============================================================ */
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+    }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 4px;
+      accent-color: var(--green);
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .checklist-item label {
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .checklist-item input:checked + label {
+      text-decoration: line-through;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Progress Bar */
+    .progress-bar-container {
+      margin-bottom: 24px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+    }
+    .progress-bar-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .progress-bar-label strong {
+      color: var(--text);
+    }
+    .progress-bar-track {
+      height: 8px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 4px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    /* CTA inline */
+    .cta-inline {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 16px 0;
+      text-align: center;
+    }
+    .cta-inline p {
+      color: var(--text-muted) !important;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    /* ============================================================
+       QUIZ (Problemloeser)
+       ============================================================ */
+    .quiz-step {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .quiz-step.active {
+      display: block;
+    }
+    .quiz-step h2 {
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .quiz-step p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .quiz-options {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .quiz-option {
+      padding: 18px 20px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+    .quiz-option strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .quiz-option span {
+      color: var(--text-muted) !important;
+      font-size: 0.9rem;
+    }
+    .quiz-option:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+    }
+    .quiz-option.selected {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.15);
+    }
+    .quiz-progress {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .quiz-progress-dot {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.15);
+    }
+    .quiz-progress-dot.active {
+      background: var(--white);
+    }
+    .quiz-progress-dot.done {
+      background: var(--green);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .badge-hoch { background: rgba(220,38,38,0.25); color: #fca5a5; border: 1px solid rgba(220,38,38,0.4); }
+    .badge-mittel { background: rgba(234,88,12,0.25); color: #fdba74; border: 1px solid rgba(234,88,12,0.4); }
+    .badge-niedrig { background: rgba(22,163,74,0.25); color: #86efac; border: 1px solid rgba(22,163,74,0.4); }
+
+    /* Result Card */
+    .result-card {
+      background: rgba(255,255,255,0.08);
+      border-left: 4px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .result-card h3 { color: var(--text); margin-bottom: 12px; }
+    .result-card p { color: var(--text-muted); }
+    .result-card ul { margin: 12px 0; padding-left: 20px; }
+    .result-card li { margin-bottom: 6px; color: var(--text-muted); }
+
+    /* ============================================================
+       LEAD CAPTURE MODAL
+       ============================================================ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal {
+      background: var(--primary);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius);
+      padding: 32px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .modal h3 { color: var(--text); margin-bottom: 8px; font-size: 1.15rem; }
+    .modal p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+    .modal-close {
+      position: absolute;
+      top: 12px; right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--text); }
+    .gdpr-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 16px 0 20px;
+    }
+    .gdpr-check input {
+      margin-top: 3px;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+    .gdpr-check label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 24px;
+    }
+    .success-msg .checkmark { font-size: 3rem; margin-bottom: 12px; color: var(--green); }
+    .success-msg h3 { color: var(--green); }
+    .success-msg p { color: var(--text-muted); }
+
+    /* ============================================================
+       CTA POST-CALCOLO
+       ============================================================ */
+    .post-calc-cta {
+      text-align: center;
+      padding: 24px;
+      margin-top: 24px;
+      background: rgba(255,255,255,0.06);
+      border: 1px dashed rgba(255,255,255,0.2);
+      border-radius: var(--radius);
+    }
+    .post-calc-cta p {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* ============================================================
+       LEAD MAGNET SECTION
+       ============================================================ */
+    .lead-magnet-section {
+      background: var(--gray-50);
+      border-top: none;
+      border-bottom: none;
+      padding: 64px 24px;
+      margin-top: 48px;
+      text-align: center;
+    }
+    .lead-magnet-section h2 {
+      color: var(--primary);
+    }
+    .lead-magnet-section .subtitle {
+      color: #555;
+    }
+    .lead-magnet-form input {
+      background: #fff !important;
+      color: var(--primary) !important;
+      border-color: #ccc !important;
+    }
+    .lead-magnet-form input::placeholder {
+      color: #999 !important;
+    }
+    .lead-magnet-form input:focus {
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 3px rgba(58,67,89,0.15) !important;
+    }
+    .lead-magnet-form .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .lead-magnet-form .btn-primary:hover {
+      background: var(--primary-dark);
+      color: #fff;
+    }
+    .lead-magnet-form .gdpr-check label {
+      color: #666;
+    }
+    .lead-magnet-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .lead-magnet-section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+    .lead-magnet-section .subtitle {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      font-size: 1rem;
+    }
+    .lead-magnet-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .lead-magnet-form input {
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-family: 'Cinzel', serif;
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+    .lead-magnet-form input::placeholder {
+      color: rgba(255,255,255,0.4);
+    }
+    .lead-magnet-form input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+    }
+
+    /* ============================================================
+       TRUST SECTION
+       ============================================================ */
+    .trust-section {
+      background: #fff;
+      padding: 64px 24px;
+      text-align: center;
+    }
+    .trust-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 36px;
+      color: var(--primary);
+    }
+    .trust-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+    .trust-point {
+      padding: 24px 16px;
+    }
+    .trust-point .trust-icon {
+      margin-bottom: 16px;
+      opacity: 0.85;
+    }
+    .trust-point .trust-icon svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--primary);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .trust-point h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+    .trust-point p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .trust-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-stat .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      display: block;
+    }
+    .trust-stat .stat-label {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* ============================================================
+       DISCLAIMER & FOOTER
+       ============================================================ */
+    .disclaimer-section {
+      padding: 32px 24px;
+      border-top: none;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--bg);
+    }
+    .disclaimer-section p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+    .site-footer {
+      background: #001431;
+      padding: 48px 24px 0;
+      border-top: none;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-main {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      padding-bottom: 40px;
+    }
+    .footer-left {
+      flex: 1;
+    }
+    .footer-right {
+      flex: 1;
+      text-align: center;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .footer-logo img {
+      height: 56px;
+      width: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .footer-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer-contact-item .footer-icon {
+      flex-shrink: 0;
+      width: 20px;
+      text-align: center;
+      margin-top: 2px;
+      opacity: 0.7;
+    }
+    .footer-contact-item strong {
+      color: var(--white);
+      display: block;
+      font-size: 0.9rem;
+    }
+    .footer-cta-btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 32px;
+      border: 1px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .footer-cta-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .footer-links {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 16px 0;
+    }
+    .footer-social a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    .footer-social a:hover { color: var(--white); }
+    .footer-bottom {
+      text-align: center;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-bottom p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+    .footer-bottom a {
+      color: var(--white);
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .footer-main {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .footer-right {
+        text-align: center;
+      }
+      .footer-links-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* ============================================================
+       ERROR
+       ============================================================ */
+    .error-msg {
+      color: #ff6b6b;
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+    #sr_exemptNote {
+      background: rgba(22,163,74,0.15) !important;
+      color: var(--green) !important;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    #sr_exemptNote strong { color: var(--green); }
+
+    /* ============================================================
+       TIMELINE — Premium
+       ============================================================ */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    /* Vertical center line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.15) 20%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.05));
+      transform: translateX(-50%);
+    }
+    /* Animated fill line */
+    .timeline::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 3px;
+      height: 0;
+      background: linear-gradient(to bottom, #6B8DD6, #8E6BC6, #C66B8E);
+      transform: translateX(-50%);
+      transition: height 0.3s ease;
+    }
+
+    /* Timeline item */
+    .tl-item {
+      position: relative;
+      width: 45%;
+      padding: 0;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .tl-item:nth-child(odd) { margin-left: 0; text-align: right; }
+    .tl-item:nth-child(even) { margin-left: 55%; text-align: left; }
+    .tl-item.visible { opacity: 1; transform: translateY(0); }
+
+    /* Card */
+    .tl-card {
+      position: relative;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 24px 24px 20px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .tl-item:nth-child(odd) .tl-card {
+      border-right: 3px solid rgba(107,141,214,0.4);
+    }
+    .tl-item:nth-child(even) .tl-card {
+      border-left: 3px solid rgba(142,107,198,0.4);
+    }
+    .tl-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.25);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    .tl-item:nth-child(odd) .tl-card:hover {
+      border-right-color: rgba(107,141,214,0.7);
+    }
+    .tl-item:nth-child(even) .tl-card:hover {
+      border-left-color: rgba(142,107,198,0.7);
+    }
+    /* Watermark number */
+    .tl-card::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -14px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4.5rem;
+      line-height: 1;
+      color: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+    .tl-item:nth-child(odd) .tl-card::before { right: 20px; }
+    .tl-item:nth-child(even) .tl-card::before { left: 20px; }
+
+    /* Dot on the center line */
+    .tl-dot {
+      position: absolute;
+      top: 16px;
+      width: 52px;
+      height: 52px;
+      background: var(--primary-dark);
+      border: 3px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: all 0.5s ease;
+    }
+    .tl-item:nth-child(odd) .tl-dot { right: -78px; }
+    .tl-item:nth-child(even) .tl-dot { left: -78px; }
+    .tl-item:nth-child(odd).visible .tl-dot {
+      border-color: rgba(107,141,214,0.6);
+      background: rgba(107,141,214,0.1);
+      box-shadow: 0 0 20px rgba(107,141,214,0.15), 0 0 40px rgba(107,141,214,0.05);
+    }
+    .tl-item:nth-child(even).visible .tl-dot {
+      border-color: rgba(142,107,198,0.6);
+      background: rgba(142,107,198,0.1);
+      box-shadow: 0 0 20px rgba(142,107,198,0.15), 0 0 40px rgba(142,107,198,0.05);
+    }
+    .tl-dot svg {
+      width: 22px;
+      height: 22px;
+      color: rgba(255,255,255,0.35);
+      transition: color 0.5s;
+    }
+    .tl-item.visible .tl-dot svg { color: var(--white); }
+
+    /* Connector line from card to dot */
+    .tl-card::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      width: 28px;
+      height: 2px;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.4s;
+    }
+    .tl-item:nth-child(odd) .tl-card::after { right: -28px; }
+    .tl-item:nth-child(even) .tl-card::after { left: -28px; }
+    .tl-item.visible .tl-card::after { background: rgba(255,255,255,0.3); }
+
+    /* Final dot — house */
+    .tl-dot-final {
+      border-color: var(--white) !important;
+      background: rgba(255,255,255,0.12) !important;
+      width: 60px !important;
+      height: 60px !important;
+    }
+    .tl-item.visible .tl-dot-final {
+      box-shadow: 0 0 24px rgba(255,255,255,0.15), 0 0 48px rgba(255,255,255,0.06);
+      animation: tlPulse 2s ease-in-out infinite;
+    }
+    .tl-dot-final svg { width: 26px !important; height: 26px !important; }
+    @keyframes tlPulse {
+      0%, 100% { box-shadow: 0 0 24px rgba(255,255,255,0.15), 0 0 48px rgba(255,255,255,0.06); }
+      50% { box-shadow: 0 0 32px rgba(255,255,255,0.25), 0 0 60px rgba(255,255,255,0.1); }
+    }
+
+    /* Card content */
+    .tl-label {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 8px;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .tl-item:nth-child(odd) .tl-label {
+      background: rgba(107,141,214,0.2);
+    }
+    .tl-item:nth-child(even) .tl-label {
+      background: rgba(142,107,198,0.2);
+    }
+    .tl-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+    .tl-card p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.65;
+    }
+
+    /* CTA in timeline */
+    .tl-cta {
+      position: relative;
+      width: 70%;
+      margin: 8px auto 48px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .tl-cta.visible { opacity: 1; transform: translateY(0); }
+    .tl-cta-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 28px 32px;
+      text-align: center;
+    }
+    .tl-cta-box p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 14px;
+    }
+
+    /* Responsive: single column on mobile */
+    @media (max-width: 768px) {
+      .timeline::before, .timeline::after { left: 24px; }
+      .tl-item { width: calc(100% - 64px); margin-left: 64px !important; text-align: left !important; margin-bottom: 36px; }
+      .tl-item:nth-child(odd) .tl-dot,
+      .tl-item:nth-child(even) .tl-dot { left: -64px; right: auto; width: 44px; height: 44px; }
+      .tl-dot svg { width: 18px; height: 18px; }
+      .tl-dot-final { width: 50px !important; height: 50px !important; }
+      .tl-dot-final svg { width: 22px !important; height: 22px !important; }
+      .tl-item:nth-child(odd) .tl-dot { right: auto; }
+      .tl-card::after { display: none; }
+      .tl-card::before { left: 16px !important; right: auto !important; font-size: 3.5rem; }
+      .tl-item:nth-child(odd) .tl-card { border-right: none; border-left: 3px solid rgba(107,141,214,0.4); }
+      .tl-item:nth-child(even) .tl-card { border-left: 3px solid rgba(142,107,198,0.4); }
+      .tl-card { padding: 20px 20px 16px; }
+      .tl-card h3 { font-size: 1rem; }
+      .tl-cta { width: calc(100% - 64px); margin-left: 64px; }
+    }
+
+    /* ============================================================
+       ANIMATIONS
+       ============================================================ */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 768px) {
+      .header-nav { display: none; }
+      .header-nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: var(--primary-dark);
+        padding: 16px 24px;
+        gap: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .mobile-menu-btn { display: block; }
+      .hero-section h1 { font-size: 1.8rem; }
+      .hero-section { padding: 60px 16px 40px; }
+      .hero-subheading { font-size: 1rem; }
+      .hero-subtitle { font-size: 0.88rem; }
+      .trust-points { grid-template-columns: 1fr; gap: 16px; }
+      .trust-stats { gap: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .main-container { padding: 0 12px 28px; }
+      .tab-nav { flex-wrap: wrap; }
+      .tab-btn { flex: 1 1 30%; font-size: 0.85rem; padding: 14px 6px; }
+      .form-group label { font-size: 0.95rem; }
+      .form-group input[type="number"],
+      .form-group input[type="text"],
+      .form-group input[type="email"],
+      .form-group input[type="tel"],
+      .form-group select,
+      .form-group textarea { font-size: 0.95rem; padding: 12px 14px; }
+      .radio-group { flex-direction: column; }
+      .radio-group label { font-size: 0.95rem; padding: 12px 16px; }
+      .btn { font-size: 1rem; padding: 14px 24px; }
+      .results-table { table-layout: fixed; }
+      .results-table th, .results-table td { padding: 10px 8px; font-size: 0.85rem; word-break: break-word; }
+      .accordion-header { font-size: 0.95rem; padding: 14px 16px; }
+      .quiz-options { grid-template-columns: 1fr; }
+      .modal { padding: 24px 16px; }
+      .lead-magnet-section { padding: 40px 16px; }
+      .trust-section { padding: 40px 16px; }
+    }
+  
+</style>
 </head>
 <body>
 
@@ -109,7 +1464,7 @@
     <h1><span>LexHaus</span> &ndash; Ihr Rechts-Kompass f&uuml;r den Hauskauf in Italien</h1>
     <p>Berechnen Sie alle Nebenkosten, pr&uuml;fen Sie Steuern, verfolgen Sie jeden Schritt und erkennen Sie rechtliche Fallstricke &ndash; bevor sie Sie Geld kosten.</p>
     <p class="sub">Entwickelt von Studio Legale Golini &ndash; &uuml;ber 20 Jahre Erfahrung im italienischen Immobilienrecht f&uuml;r K&auml;ufer aus DE/AT/CH.</p>
-    <a href="/lexhaus/app/" class="btn btn-main">LexHaus kostenlos starten</a>
+    <a href="#lexhaus-tool" class="btn btn-main">LexHaus kostenlos starten</a>
   </div>
 </section>
 
@@ -210,9 +1565,1564 @@
   <div class="container">
     <h2>Bereit f&uuml;r Ihren Immobilienkauf in Italien?</h2>
     <p>LexHaus gibt Ihnen die Werkzeuge, um informiert und vorbereitet in jeden Termin zu gehen &ndash; kostenlos, direkt im Browser.</p>
-    <a href="/lexhaus/app/" class="btn btn-main">LexHaus kostenlos starten</a>
+    <a href="#lexhaus-tool" class="btn btn-main">LexHaus kostenlos starten</a>
   </div>
 </section>
+
+
+<!-- LEXHAUS TOOL -->
+<section class="section" id="lexhaus-tool" style="border-top:1px solid rgba(255,255,255,0.1);padding-top:40px">
+  <div class="container" style="text-align:center;margin-bottom:30px">
+    <h2 class="section-title">LexHaus &ndash; Jetzt kostenlos nutzen</h2>
+  </div>
+  <div class="main-container" id="tools">
+
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('kostenrechner')" id="tabBtn_kostenrechner">Kosten</button>
+      <button class="tab-btn" onclick="switchTab('steuerrechner')" id="tabBtn_steuerrechner">Steuern</button>
+      <button class="tab-btn" onclick="switchTab('checkliste')" id="tabBtn_checkliste">Checkliste</button>
+      <button class="tab-btn" onclick="switchTab('problemloeser')" id="tabBtn_problemloeser">Probleme</button>
+      <button class="tab-btn" onclick="switchTab('kontakt')" id="tabBtn_kontakt">Kontakt</button>
+    </div>
+
+    <!-- ============================================================
+         3a. KOSTENRECHNER
+         ============================================================ -->
+    <div id="panel_kostenrechner" class="tab-panel active">
+      <form id="kr_calcForm" onsubmit="return false;">
+        <div class="form-group">
+          <label for="kr_kaufpreis">Kaufpreis (EUR)</label>
+          <input type="number" id="kr_kaufpreis" placeholder="z.B. 250000" min="1" required>
+        </div>
+        <div class="form-group">
+          <label for="kr_immobilientyp">Immobilientyp</label>
+          <select id="kr_immobilientyp" required>
+            <option value="">-- Bitte waehlen --</option>
+            <option value="erstwohnsitz">Erstwohnsitz (Prima Casa)</option>
+            <option value="zweitwohnsitz">Zweitwohnsitz (Seconda Casa)</option>
+            <option value="gewerbe">Gewerbeimmobilie</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Verkaeufer</label>
+          <div class="radio-group">
+            <label><input type="radio" name="kr_verkaeufer" value="privat" required checked> <span>Privatperson</span></label>
+            <label><input type="radio" name="kr_verkaeufer" value="unternehmen"> <span>Bautraeger / Unternehmen</span></label>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Beim Kauf von einem Unternehmen/Bautraeger faellt in der Regel MwSt. statt Registersteuer an.</p>
+        </div>
+        <div class="form-group">
+          <label for="kr_region">Region</label>
+          <select id="kr_region" required>
+            <option value="">-- Bitte waehlen --</option>
+            <option value="abruzzen">Abruzzen</option>
+            <option value="aostatal">Aostatal</option>
+            <option value="apulien">Apulien</option>
+            <option value="basilikata">Basilikata</option>
+            <option value="emilia-romagna">Emilia-Romagna</option>
+            <option value="friaul">Friaul-Julisch Venetien</option>
+            <option value="kalabrien">Kalabrien</option>
+            <option value="kampanien">Kampanien</option>
+            <option value="latium">Latium</option>
+            <option value="ligurien">Ligurien</option>
+            <option value="lombardei">Lombardei</option>
+            <option value="marken">Marken</option>
+            <option value="molise">Molise</option>
+            <option value="piemont">Piemont</option>
+            <option value="sardinien">Sardinien</option>
+            <option value="sizilien">Sizilien</option>
+            <option value="suedtirol">Suedtirol-Trentino</option>
+            <option value="toskana">Toskana</option>
+            <option value="umbrien">Umbrien</option>
+            <option value="venetien">Venetien</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Kauferstatus</label>
+          <div class="radio-group">
+            <label><input type="radio" name="kr_status" value="eu" required> <span>EU-Buerger</span></label>
+            <label><input type="radio" name="kr_status" value="nicht-eu"> <span>Nicht-EU-Buerger</span></label>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="krCalculate()">Kosten berechnen</button>
+        <div id="kr_formError" class="error-msg" style="text-align:center; margin-top:8px;"></div>
+      </form>
+
+      <div id="kr_results" class="results" style="display:none;">
+        <h2>Ihre Kostenaufstellung</h2>
+        <table class="results-table">
+          <thead><tr><th>Kostenart</th><th>Satz</th><th>Betrag</th></tr></thead>
+          <tbody id="kr_resultsBody"></tbody>
+        </table>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:20px; font-style:italic;">
+          Hinweis: Die Registersteuer wird in Italien auf den Katasterwert (Valore Catastale) berechnet, der in der Regel deutlich unter dem Kaufpreis liegt. Diese Berechnung basiert auf dem Kaufpreis und stellt daher eine konservative Schaetzung (Maximalwert) dar. Fuer eine praezise Berechnung empfehlen wir eine individuelle Analyse.
+        </p>
+        <div class="post-calc-cta" id="kr_postCta">
+          <p>Moechten Sie diese Ergebnisse per E-Mail erhalten?</p>
+          <button class="btn btn-outline" onclick="showLeadModal('kostenrechner')">Ergebnisse per E-Mail senden</button>
+          <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">Sie haben Fragen zu den Kosten oder moechten eine individuelle Berechnung auf Basis des Katasterwerts?</p>
+          <a href="#tools" onclick="switchTab('kontakt')" style="color:var(--white); font-size:0.85rem; text-decoration:underline;">Beratung anfragen &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         3b. STEUERRECHNER
+         ============================================================ -->
+    <div id="panel_steuerrechner" class="tab-panel">
+      <form id="sr_taxForm" onsubmit="return false;">
+        <div class="form-group">
+          <label for="sr_rendita">Katasterertrag / Rendita Catastale (EUR)</label>
+          <span class="help-text">Den Katasterertrag finden Sie im Kaufvertrag oder in der Katasterbescheinigung (Visura Catastale). Falls unbekannt, schaetzen Sie ca. 500 EUR fuer eine Wohnung.</span>
+          <input type="number" id="sr_rendita" placeholder="z.B. 500" min="1" required>
+        </div>
+        <div class="form-group">
+          <label for="sr_immobilientyp">Immobilientyp</label>
+          <select id="sr_immobilientyp" required>
+            <option value="">-- Bitte waehlen --</option>
+            <option value="wohnung">Wohnung</option>
+            <option value="haus">Haus</option>
+            <option value="gewerbe">Gewerbeimmobilie</option>
+            <option value="grundstueck">Grundstueck</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ist dies Ihr Erstwohnsitz in Italien?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="sr_erstwohnsitz" value="ja" required> <span>Ja</span></label>
+            <label><input type="radio" name="sr_erstwohnsitz" value="nein"> <span>Nein</span></label>
+          </div>
+          <span class="help-text" style="margin-top:6px;">Erstwohnsitz (Residenza): Sie sind in der Gemeinde gemeldet und leben dort ueberwiegend.</span>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="srCalculateTax()">Steuern berechnen</button>
+        <div id="sr_formError" class="error-msg" style="text-align:center; margin-top:8px;"></div>
+      </form>
+
+      <div id="sr_results" class="results" style="display:none;">
+        <h2>Ihre jaehrliche Steuerbelastung</h2>
+        <table class="results-table">
+          <thead><tr><th>Steuerart</th><th>Details</th><th>Betrag / Jahr</th></tr></thead>
+          <tbody id="sr_resultsBody"></tbody>
+        </table>
+        <div id="sr_exemptNote" style="display:none;">
+          <strong>Hinweis:</strong> Als Erstwohnsitz (Prima Casa) ist Ihre Immobilie von der IMU befreit.
+        </div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:20px; font-style:italic;">
+          Hinweis: Der IMU-Satz von 0,86% ist ein landesweiter Durchschnittswert; der tatsaechliche Satz wird von der jeweiligen Gemeinde festgelegt und kann abweichen. Seit 2021 koennen bestimmte im Ausland ansaessige Rentner eine 50%-Reduktion der IMU (und eine Reduktion der TARI) fuer eine einzige, nicht vermietete und nicht in Leihe gegebene Immobilie in Italien erhalten, sofern eine in internationalem Abkommen gereifte Rente bezogen wird und alle gesetzlichen Voraussetzungen erfuellt sind. Bitte pruefen Sie immer die aktuellen Gemeindesatzungen und Gesetzesaenderungen. Die TARI variiert je nach Gemeinde &mdash; die angegebenen Werte sind Richtwerte.
+        </p>
+        <div class="post-calc-cta" id="sr_postCta">
+          <p>Moechten Sie diese Ergebnisse per E-Mail erhalten?</p>
+          <button class="btn btn-outline" onclick="showLeadModal('steuerrechner')">Ergebnisse per E-Mail senden</button>
+          <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">Moechten Sie pruefen, ob Sie Anspruch auf Steuervorteile haben?</p>
+          <a href="#tools" onclick="switchTab('kontakt')" style="color:var(--white); font-size:0.85rem; text-decoration:underline;">Beratung anfragen &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Agevolazioni Fiscali -->
+      <div style="margin-top:40px; padding-top:32px; border-top:2px solid rgba(255,255,255,0.3);">
+        <h2 style="color:var(--text); margin-bottom:20px;">Steuervorteile fuer Zuwanderer nach Italien</h2>
+        <p style="color:var(--text-muted); margin-bottom:16px;">Italien bietet attraktive Steuervorteile fuer Personen, die ihren Wohnsitz nach Italien verlegen. Pruefen Sie, ob Sie berechtigt sind:</p>
+        <p style="color:var(--text-muted); font-size:0.75rem; font-style:italic; margin-bottom:24px;">Die folgenden Angaben sind vereinfacht dargestellt. Voraussetzungen, Laufzeiten und Betraege koennen sich durch gesetzliche Aenderungen aendern. Lassen Sie Ihre individuelle Situation stets von einem Steuerberater oder Anwalt pruefen.</p>
+        <div class="card" style="margin-bottom:16px;">
+          <h3 style="margin-bottom:8px;">Flat Tax 7% fuer Rentner</h3>
+          <p style="margin-bottom:8px;">Pauschalsteuer von nur <strong style="color:var(--text);">7%</strong> auf alle auslaendischen Einkuenfte fuer <strong style="color:var(--text);">bis zu 9 Steuerjahre</strong>.</p>
+          <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+            <li>Fuer Rentner mit Rente auslaendischer Herkunft</li>
+            <li>Wohnsitz in Sueditalien (Gemeinde unter 20.000 Einwohner)</li>
+            <li>Regionen: Sizilien, Kalabrien, Sardinien, Kampanien, Basilikata, Abruzzen, Molise, Apulien</li>
+            <li>Nicht in Italien steuerlich ansaessig in den letzten 5 Steuerzeitraeumen</li>
+            <li>Befreiung von IVIE und IVAFE Vermoegenssteuer</li>
+            <li>In Italien erzielte Einkuenfte werden nach den normalen Steuersaetzen besteuert</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-bottom:16px;">
+          <h3 style="margin-bottom:8px;">Regime Impatriati (ab 2024)</h3>
+          <p style="margin-bottom:8px;">Steuerbefreiung von <strong style="color:var(--text);">50%</strong> des Einkommens (60% mit Kindern) fuer <strong style="color:var(--text);">5 Jahre</strong>.</p>
+          <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+            <li>Gilt fuer Arbeits- und Berufseinkuenfte in Italien (nicht fuer Unternehmenseinkuenfte)</li>
+            <li>Hohe Qualifikation oder Spezialisierung erforderlich</li>
+            <li>Maximal 600.000 EUR beguenstigtes Einkommen pro Jahr</li>
+            <li>Nicht in Italien steuerlich ansaessig in den letzten 3 Jahren</li>
+            <li>Verpflichtung, mindestens 4 Jahre in Italien zu bleiben</li>
+            <li>Fuer Zuzuege vor 2024 gelten ggf. abweichende Uebergangsregelungen</li>
+          </ul>
+          <p style="color:var(--text-muted); font-size:0.75rem; font-style:italic; margin-top:8px;">Vereinfachte Darstellung. Dieses Regime unterliegt haeufigen gesetzlichen Aenderungen (D.Lgs. 209/2023 ff.). Voraussetzungen und Laufzeiten im Einzelfall pruefen.</p>
+        </div>
+        <div class="card" style="margin-bottom:16px;">
+          <h3 style="margin-bottom:8px;">Flat Tax fuer vermoeegende Neuzuziehende (ab 2026)</h3>
+          <p style="margin-bottom:8px;">Pauschalsteuer von <strong style="color:var(--text);">300.000 EUR/Jahr</strong> auf saemtliche auslaendische Einkuenfte (fuer Zuzuege ab 1.1.2026).</p>
+          <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+            <li>Fuer Personen mit hohem Vermoegen und Auslandseinkuenften</li>
+            <li>Nicht in Italien steuerlich ansaessig in 9 der letzten 10 Jahre</li>
+            <li>Zusaetzlich 50.000 EUR pro Familienmitglied</li>
+            <li>Italienische Einkuenfte werden normal besteuert</li>
+            <li>Wer vor 2026 zugezogen ist, behalt die bisherige Schwelle von 200.000 EUR / 25.000 EUR pro Familienmitglied</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         3c. CHECKLISTE — Visual Timeline
+         ============================================================ -->
+    <div id="panel_checkliste" class="tab-panel">
+
+      <h2 style="margin-bottom:8px;">Die 9 Schritte zum Immobilienkauf in Italien</h2>
+      <p style="color:var(--text-muted); margin-bottom:40px;">Von der Steuernummer bis zur Schluesseluebergabe — so laeuft ein Immobilienkauf in Italien ab.</p>
+
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+          </div>
+          <div class="tl-card" data-step="1">
+            <span class="tl-label">Schritt 1</span>
+            <h3>Steuernummer beantragen</h3>
+            <p>Codice Fiscale — Voraussetzung fuer jede Transaktion in Italien. Beim Konsulat oder bei der Agenzia delle Entrate.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><circle cx="17" cy="15" r="2"/></svg>
+          </div>
+          <div class="tl-card" data-step="2">
+            <span class="tl-label">Schritt 2</span>
+            <h3>Bankkonto eroeffnen</h3>
+            <p>Italienisches Konto (Conto Corrente per Non Residenti) fuer Zahlungen und Ueberweisungen.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M8 8l3 3 5-5" stroke-width="1.5"/></svg>
+          </div>
+          <div class="tl-card" data-step="3">
+            <span class="tl-label">Schritt 3</span>
+            <h3>Immobilie suchen &amp; besichtigen</h3>
+            <p>Online-Portale, lokale Agenturen, persoenliche Besichtigung. Umgebung und Infrastruktur pruefen.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div class="tl-card" data-step="4">
+            <span class="tl-label">Schritt 4</span>
+            <h3>Due Diligence</h3>
+            <p>Katasterauszug, Baukonformitaet, Grundbuch, Energieausweis — der wichtigste Schritt vor dem Kauf.</p>
+          </div>
+        </div>
+
+        <!-- CTA midpoint -->
+        <div class="tl-cta">
+          <div class="tl-cta-box">
+            <p>Ab hier wird es rechtlich komplex. Viele unserer Klienten lassen sich ab diesem Punkt begleiten.</p>
+            <button class="btn btn-outline" onclick="switchTab('kontakt')" style="font-size:0.8rem; padding:10px 24px;">Beratung anfragen</button>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.83 2.83 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+          </div>
+          <div class="tl-card" data-step="5">
+            <span class="tl-label">Schritt 5</span>
+            <h3>Vorvertrag (Compromesso)</h3>
+            <p>Bindender Vorvertrag mit Preis, Bedingungen und Fristen. Anzahlung: 10–30% des Kaufpreises.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><path d="M9 15l2 2 4-4"/></svg>
+          </div>
+          <div class="tl-card" data-step="6">
+            <span class="tl-label">Schritt 6</span>
+            <h3>Notarvertrag (Rogito)</h3>
+            <p>Endgueltiger Kaufvertrag vor dem Notar. Eigentumsuebergang, Restzahlung, Steuern und Gebuehren.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17,1 21,5 17,9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7,23 3,19 7,15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+          </div>
+          <div class="tl-card" data-step="7">
+            <span class="tl-label">Schritt 7</span>
+            <h3>Eigentuemerwechsel (Voltura)</h3>
+            <p>Eintragung beim Katasteramt und Grundbuchamt. Gemeinde informieren. Erledigt der Notar.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <div class="tl-card" data-step="8">
+            <span class="tl-label">Schritt 8</span>
+            <h3>Steuervorteile pruefen</h3>
+            <p>Flat Tax 7% fuer Rentner, Regime Impatriati, Prima-Casa — erhebliche Ersparnisse moeglich.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot tl-dot-final">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          </div>
+          <div class="tl-card" data-step="9">
+            <span class="tl-label">Ziel erreicht</span>
+            <h3>Schluesseluebergabe</h3>
+            <p>Versorgungsvertraege umstellen, IMU und TARI anmelden, Gebaeudeversicherung abschliessen. Willkommen in Italien!</p>
+          </div>
+        </div>
+
+      </div><!-- /.timeline -->
+
+      <!-- CTA end -->
+      <div style="margin-top:40px; text-align:center; padding:32px 24px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.2); border-radius:12px;">
+        <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:16px;">Wir begleiten Sie persoenlich durch jeden dieser Schritte — von der Due Diligence bis zur Schluesseluebergabe.</p>
+        <button class="btn btn-outline" onclick="switchTab('kontakt')">Beratung anfragen</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         3d. PROBLEMLOESER
+         ============================================================ -->
+    <div id="panel_problemloeser" class="tab-panel">
+
+      <p style="margin-bottom:24px; color:var(--text-muted);">H&auml;ufige Probleme mit Immobilien in Italien und was Sie wissen m&uuml;ssen:</p>
+
+      <!-- ========== QUICK CHECK QUIZ ========== -->
+      <div id="quickCheckQuiz" style="margin-bottom:32px; padding:24px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:12px;">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:900; margin-bottom:6px; color:var(--text);">Quick Check: Welche Risiken betreffen Sie?</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:12px;">Beantworten Sie 5 kurze Fragen &mdash; wir zeigen Ihnen, worauf Sie besonders achten sollten.</p>
+
+        <!-- Progress bar -->
+        <div style="margin-bottom:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span id="qcProgressText" style="font-size:0.78rem; color:var(--text-muted);">0 von 5 beantwortet</span>
+          </div>
+          <div style="height:4px; background:rgba(255,255,255,0.1); border-radius:2px; overflow:hidden;">
+            <div id="qcProgressBar" style="height:100%; width:0%; background:linear-gradient(90deg,#E8806A,#e8a06a); border-radius:2px; transition:width 0.4s ease;"></div>
+          </div>
+        </div>
+
+        <div id="qcQuestions">
+          <div class="qc-question" style="margin-bottom:14px; padding:12px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <span style="font-size:0.9rem; color:var(--text); flex:1; min-width:200px;">1. Wurde die Immobilie in den letzten Jahren umgebaut oder erweitert?</span>
+            <span style="display:flex; gap:8px; flex-shrink:0;">
+              <button class="btn btn-outline qc-btn" data-q="1" data-a="yes" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Ja</button>
+              <button class="btn btn-outline qc-btn" data-q="1" data-a="no" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Nein</button>
+            </span>
+          </div>
+          <div class="qc-question" style="margin-bottom:14px; padding:12px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <span style="font-size:0.9rem; color:var(--text); flex:1; min-width:200px;">2. Gibt es mehrere Eigent&uuml;mer oder ist Erbschaft im Spiel?</span>
+            <span style="display:flex; gap:8px; flex-shrink:0;">
+              <button class="btn btn-outline qc-btn" data-q="2" data-a="yes" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Ja</button>
+              <button class="btn btn-outline qc-btn" data-q="2" data-a="no" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Nein</button>
+            </span>
+          </div>
+          <div class="qc-question" style="margin-bottom:14px; padding:12px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <span style="font-size:0.9rem; color:var(--text); flex:1; min-width:200px;">3. Ist die Immobilie derzeit vermietet oder verpachtet?</span>
+            <span style="display:flex; gap:8px; flex-shrink:0;">
+              <button class="btn btn-outline qc-btn" data-q="3" data-a="yes" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Ja</button>
+              <button class="btn btn-outline qc-btn" data-q="3" data-a="no" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Nein</button>
+            </span>
+          </div>
+          <div class="qc-question" style="margin-bottom:14px; padding:12px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <span style="font-size:0.9rem; color:var(--text); flex:1; min-width:200px;">4. Kennen Sie den genauen Grundbuch- und Katasterstatus?</span>
+            <span style="display:flex; gap:8px; flex-shrink:0;">
+              <button class="btn btn-outline qc-btn" data-q="4" data-a="yes" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Ja</button>
+              <button class="btn btn-outline qc-btn" data-q="4" data-a="no" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Nein</button>
+            </span>
+          </div>
+          <div class="qc-question" style="margin-bottom:14px; padding:12px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <span style="font-size:0.9rem; color:var(--text); flex:1; min-width:200px;">5. Gibt es offene Steuern oder beh&ouml;rdliche Verfahren?</span>
+            <span style="display:flex; gap:8px; flex-shrink:0;">
+              <button class="btn btn-outline qc-btn" data-q="5" data-a="yes" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Ja</button>
+              <button class="btn btn-outline qc-btn" data-q="5" data-a="no" onclick="qcAnswer(this)" style="font-size:0.8rem; padding:6px 16px; min-width:50px;">Nein</button>
+            </span>
+          </div>
+        </div>
+
+        <div id="qcResult" style="display:none; margin-top:18px; padding:16px; background:rgba(232,128,106,0.1); border:1px solid rgba(232,128,106,0.3); border-radius:8px;">
+          <p style="font-weight:700; font-size:0.95rem; color:#E8806A; margin-bottom:8px;">Ihre Risikobereiche:</p>
+          <ul id="qcResultList" style="color:var(--text-muted); padding-left:20px; font-size:0.88rem; margin-bottom:14px;"></ul>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-outline" onclick="switchTab('kontakt')" style="font-size:0.85rem; padding:10px 20px;">Beratung anfragen</button>
+            <button class="btn btn-outline" onclick="qcReset()" style="font-size:0.85rem; padding:10px 20px; opacity:0.6;">Neu starten</button>
+          </div>
+        </div>
+        <div id="qcNoRisk" style="display:none; margin-top:18px; padding:16px; background:rgba(22,163,74,0.1); border:1px solid rgba(22,163,74,0.3); border-radius:8px;">
+          <p style="font-weight:700; font-size:0.95rem; color:var(--green); margin-bottom:4px;">Gute Ausgangslage!</p>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:14px;">Basierend auf Ihren Antworten scheinen keine offensichtlichen Risiken vorzuliegen. Lesen Sie trotzdem die einzelnen Themen &mdash; oder lassen Sie Ihre Situation sicherheitshalber pr&uuml;fen.</p>
+          <button class="btn btn-outline" onclick="qcReset()" style="font-size:0.85rem; padding:10px 20px; opacity:0.6;">Neu starten</button>
+        </div>
+      </div>
+
+      <!-- ========== ACCORDION PROBLEMS ========== -->
+
+      <!-- Problem 1: Bauliche Probleme (Abuso Edilizio) -->
+      <div class="accordion-item" id="problem_1">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+          <div><span class="step-number">1</span> Bauliche Probleme (Abuso Edilizio) <span style="display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.72rem; font-weight:700; margin-left:10px; background:rgba(220,53,69,0.2); color:#dc3545;">HOCH</span></div>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px; margin-top:0;">&#9888; Was passiert</div>
+          <p style="margin-bottom:12px; font-size:0.9rem;">Sie kaufen eine Immobilie und stellen sp&auml;ter fest, dass Anbauten, Terrassen oder Umbauten nie genehmigt wurden. Oft steht im Kataster etwas anderes als in der Realit&auml;t. Dieses Problem betrifft sch&auml;tzungsweise jede f&uuml;nfte Immobilie in Italien.</p>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128176; Warum das teuer wird</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Gemeinde kann R&uuml;ckbau oder Geldbu&szlig;e anordnen (f&uuml;nfstellige Betr&auml;ge)</li>
+              <li>Ohne Sanierung schwer weiterverkaufbar</li>
+              <li>Bei gravierenden Verst&ouml;&szlig;en drohen Beschlagnahme und Nutzungsverbote</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128737; Wie Sie sich sch&uuml;tzen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Technische und juristische Due Diligence vor jeder Unterschrift</li>
+              <li>Keine &ldquo;Proposta&rdquo; ohne Garantien zur baulichen Legalit&auml;t</li>
+              <li>Im Vorvertrag klar regeln, wer Sanierungen bezahlt</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#9878; Wann Sie einen Anwalt brauchen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Hinweise auf nicht genehmigte Arbeiten oder fehlende Unterlagen</li>
+              <li>Verk&auml;ufer erz&auml;hlt &ldquo;Sanierung l&auml;uft schon&rdquo;</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:16px; padding:14px 18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:8px; text-align:center;">
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:10px;">Unsicher, ob das auf Ihren Fall zutrifft?</p>
+            <button class="btn btn-outline" onclick="switchTab('kontakt')" style="font-size:0.85rem; padding:10px 20px;">Beratung anfragen</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem 2: Erbschaft und Nachlass (Successione) -->
+      <div class="accordion-item" id="problem_2">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+          <div><span class="step-number">2</span> Erbschaft und Nachlass (Successione) <span style="display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.72rem; font-weight:700; margin-left:10px; background:rgba(220,53,69,0.2); color:#dc3545;">HOCH</span></div>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px; margin-top:0;">&#9888; Was passiert</div>
+          <p style="margin-bottom:12px; font-size:0.9rem;">Immobilie geh&ouml;rt mehreren Erben oder erbrechtliche Situation unklar. Manchmal verkauft nur ein Miterbe, es existieren alte Testamente oder Anspr&uuml;che von Kindern aus fr&uuml;heren Beziehungen.</p>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128176; Warum das teuer wird</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Kaufvertrag kann anfechtbar sein &mdash; langwierige Prozesse und Risiko des Eigentumsverlusts</li>
+              <li>Unklarer Titel blockiert Wiederverkauf oder Finanzierung</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128737; Wie Sie sich sch&uuml;tzen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Vollst&auml;ndige Grundbuchausz&uuml;ge und Erbfolge-Nachweise verlangen</li>
+              <li>Nur kaufen, wenn alle Eigent&uuml;mer unterschreiben</li>
+              <li>Im Vorvertrag Haftung f&uuml;r &ldquo;klare Eigentumslage frei von Rechten Dritter&rdquo;</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#9878; Wann Sie einen Anwalt brauchen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Mehr als eine Person als Eigent&uuml;mer im Grundbuch</li>
+              <li>Hinweise auf Scheidung, Erbengemeinschaft oder Minderj&auml;hrige unter den Erben</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:16px; padding:14px 18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:8px; text-align:center;">
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:10px;">Unsicher, ob das auf Ihren Fall zutrifft?</p>
+            <button class="btn btn-outline" onclick="switchTab('kontakt')" style="font-size:0.85rem; padding:10px 20px;">Beratung anfragen</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem 3: Eigentuemergemeinschaft (Condominio) -->
+      <div class="accordion-item" id="problem_3">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+          <div><span class="step-number">3</span> Eigent&uuml;mergemeinschaft (Condominio) <span style="display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.72rem; font-weight:700; margin-left:10px; background:rgba(255,165,0,0.2); color:#ffa500;">MITTEL</span></div>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px; margin-top:0;">&#9888; Was passiert</div>
+          <p style="margin-bottom:12px; font-size:0.9rem;">Sie erwerben eine Wohnung und &uuml;bernehmen Rechte und Pflichten der Eigent&uuml;mergemeinschaft: laufende Hausgelder, R&uuml;cklagen, alte Beschl&uuml;sse zu Sanierungen.</p>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128176; Warum das teuer wird</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Haftung f&uuml;r ausstehende Hausgelder des Verk&auml;ufers</li>
+              <li>Kostspielige Arbeiten (Fassade, Dach, Aufzug) im f&uuml;nfstelligen Bereich pro Einheit m&ouml;glich</li>
+              <li>Schlechte Verwaltung dr&uuml;ckt Immobilienwert</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128737; Wie Sie sich sch&uuml;tzen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Letzte Protokolle der Eigent&uuml;merversammlung und Abrechnungen vorlegen lassen</li>
+              <li>Gezielt nach geplanten Sanierungen und R&uuml;cklagen fragen</li>
+              <li>Hausordnung pr&uuml;fen (Ferienvermietung, Tiere)</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#9878; Wann Sie einen Anwalt brauchen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Streitigkeiten oder Anfechtungen in Protokollen</li>
+              <li>Besondere Nutzung geplant (Ferienvermietung, Home-Office)</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:16px; padding:14px 18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:8px; text-align:center;">
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:10px;">Unsicher, ob das auf Ihren Fall zutrifft?</p>
+            <button class="btn btn-outline" onclick="switchTab('kontakt')" style="font-size:0.85rem; padding:10px 20px;">Beratung anfragen</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem 4: Grundbuch- und Katasterprobleme -->
+      <div class="accordion-item" id="problem_4">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+          <div><span class="step-number">4</span> Grundbuch- und Katasterprobleme <span style="display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.72rem; font-weight:700; margin-left:10px; background:rgba(220,53,69,0.2); color:#dc3545;">HOCH</span></div>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px; margin-top:0;">&#9888; Was passiert</div>
+          <p style="margin-bottom:12px; font-size:0.9rem;">Im Grundbuch und Kataster stehen andere Daten als in der Realit&auml;t: abweichende Fl&auml;chen, falsche Nutzung, alte Hypotheken, Dienstbarkeiten (Wegerechte, Wohnrechte).</p>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128176; Warum das teuer wird</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Falsche Eintragungen k&ouml;nnen Kauf anfechtbar machen</li>
+              <li>Unerkannte Hypotheken erm&ouml;glichen Gl&auml;ubigerzugriff</li>
+              <li>Nutzungsrechte Dritter (z.B. lebenslanges Wohnrecht) schr&auml;nken Gebrauch erheblich ein</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128737; Wie Sie sich sch&uuml;tzen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Vollst&auml;ndigen Grundbuch- und Katastercheck durchf&uuml;hren lassen</li>
+              <li>Fl&auml;che und Nutzung im Expos&eacute; mit offiziellen Pl&auml;nen abgleichen</li>
+              <li>Im Vorvertrag Verk&auml;ufer zur Berichtigung auf seine Kosten verpflichten</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#9878; Wann Sie einen Anwalt brauchen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Praktisch immer ohne Erfahrung mit italienischem Grundbuch</li>
+              <li>Unbedingt bei Belastungen (ipoteche, pignoramenti, servit&ugrave;, usufrutto) oder gr&ouml;&szlig;eren Abweichungen</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:16px; padding:14px 18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:8px; text-align:center;">
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:10px;">Unsicher, ob das auf Ihren Fall zutrifft?</p>
+            <button class="btn btn-outline" onclick="switchTab('kontakt')" style="font-size:0.85rem; padding:10px 20px;">Beratung anfragen</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem 5: Steuerfragen und Rueckstaende -->
+      <div class="accordion-item" id="problem_5">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+          <div><span class="step-number">5</span> Steuerfragen und R&uuml;ckst&auml;nde <span style="display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.72rem; font-weight:700; margin-left:10px; background:rgba(255,165,0,0.2); color:#ffa500;">MITTEL</span></div>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px; margin-top:0;">&#9888; Was passiert</div>
+          <p style="margin-bottom:12px; font-size:0.9rem;">Zum Objekt geh&ouml;ren laufende und vergangene Steuern: IMU, TARI, eventuell R&uuml;ckst&auml;nde, plus Themen wie Mieteinnahmen-Besteuerung und Sonderregime (7%-Flat Tax, Impatriati).</p>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128176; Warum das teuer wird</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>R&uuml;ckst&auml;ndige IMU/TARI mit Zinsen und Sanktionen schnell vierstellig</li>
+              <li>Falsche Steuerregime-Wahl f&uuml;hrt zu Nachzahlungen</li>
+              <li>Spezialregime-Fehler k&ouml;nnen teuer werden</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128737; Wie Sie sich sch&uuml;tzen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Zahlungsnachweise f&uuml;r IMU/TARI der letzten Jahre vom Verk&auml;ufer verlangen</li>
+              <li>Steuerliches Grobkonzept vor dem Kauf erstellen lassen</li>
+              <li>Spezialregime von Steuerexperten pr&uuml;fen lassen, nicht vom Makler</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#9878; Wann Sie einen Anwalt brauchen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>R&uuml;ckst&auml;nde, Ratenzahlungen oder Streit mit der Gemeinde</li>
+              <li>Grenz&uuml;berschreitende F&auml;lle (Wohnsitz im Ausland, mehrere Immobilien)</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:16px; padding:14px 18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:8px; text-align:center;">
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:10px;">Unsicher, ob das auf Ihren Fall zutrifft?</p>
+            <button class="btn btn-outline" onclick="switchTab('kontakt')" style="font-size:0.85rem; padding:10px 20px;">Beratung anfragen</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem 6: Miet- und Pachtprobleme -->
+      <div class="accordion-item" id="problem_6">
+        <div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+          <div><span class="step-number">6</span> Miet- und Pachtprobleme <span style="display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.72rem; font-weight:700; margin-left:10px; background:rgba(255,165,0,0.2); color:#ffa500;">MITTEL</span></div>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="accordion-body">
+          <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px; margin-top:0;">&#9888; Was passiert</div>
+          <p style="margin-bottom:12px; font-size:0.9rem;">Die Immobilie ist vermietet oder Sie m&ouml;chten selbst vermieten. In Italien gelten je nach Vertragsart sehr unterschiedliche Regeln und K&uuml;ndigungsschutz-Niveaus.</p>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128176; Warum das teuer wird</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Als neuer Eigent&uuml;mer treten Sie in bestehende Vertr&auml;ge ein &mdash; Mieter kann nicht einfach &ldquo;herausbekommen&rdquo; werden</li>
+              <li>Unsaubere Ferienvermietung f&uuml;hrt zu Bu&szlig;geldern und Steuernachzahlungen</li>
+              <li>Langfristige Pachtvertr&auml;ge schr&auml;nken Nutzung stark ein</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#128737; Wie Sie sich sch&uuml;tzen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Alle bestehenden Miet-, Pacht- oder Verwaltungsvertr&auml;ge vollst&auml;ndig aush&auml;ndigen lassen</li>
+              <li>Geplante Nutzung mit Gemeinde- und Condominio-Regeln abgleichen</li>
+              <li>Fr&uuml;hzeitig kl&auml;ren, wie Mieteinnahmen versteuert werden (Cedolare secca etc.)</li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid rgba(255,255,255,0.08); margin-top:14px; padding-top:14px;">
+            <div style="font-weight:700; font-size:0.92rem; color:#E8806A; margin-bottom:6px;">&#9878; Wann Sie einen Anwalt brauchen</div>
+            <ul style="color:var(--text-muted); padding-left:20px; font-size:0.9rem;">
+              <li>Bereits vermietete Immobilie oder &ldquo;nur m&uuml;ndliche Absprachen&rdquo;</li>
+              <li>Kurzzeit-/touristische Vermietung geplant in streng regulierten Regionen</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:16px; padding:14px 18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:8px; text-align:center;">
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:10px;">Unsicher, ob das auf Ihren Fall zutrifft?</p>
+            <button class="btn btn-outline" onclick="switchTab('kontakt')" style="font-size:0.85rem; padding:10px 20px;">Beratung anfragen</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div style="margin-top:32px; text-align:center; padding:24px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); border-radius:12px;">
+        <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:16px;">Ihre Situation ist komplexer? Wir beraten Sie pers&ouml;nlich und auf Deutsch.</p>
+        <button class="btn btn-outline" onclick="switchTab('kontakt')">Beratung anfragen</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         3e. KONTAKT (wizard: quiz + form)
+         ============================================================ -->
+    <div id="panel_kontakt" class="tab-panel">
+
+      <!-- Wizard Progress -->
+      <div class="quiz-progress" id="wiz_progress">
+        <div class="quiz-progress-dot active" id="wiz_dot1"></div>
+        <div class="quiz-progress-dot" id="wiz_dot2"></div>
+        <div class="quiz-progress-dot" id="wiz_dot3"></div>
+        <div class="quiz-progress-dot" id="wiz_dot4"></div>
+      </div>
+
+      <!-- Step 1: Situation -->
+      <div class="quiz-step active" id="wiz_step1">
+        <h2>Was beschreibt Ihre Situation am besten?</h2>
+        <p>Waehlen Sie die Kategorie, die Ihrem Anliegen entspricht.</p>
+        <div class="quiz-options" style="grid-template-columns: 1fr 1fr;">
+          <div class="quiz-option" onclick="wizSelect(1, 'kauf')">
+            <strong>Immobilienkauf</strong>
+            <span>Ich moechte eine Immobilie in Italien kaufen oder bin bereits im Kaufprozess.</span>
+          </div>
+          <div class="quiz-option" onclick="wizSelect(1, 'bauprobleme')">
+            <strong>Bauliche Probleme</strong>
+            <span>Nicht genehmigte Umbauten, Abuso Edilizio, fehlende Baugenehmigungen.</span>
+          </div>
+          <div class="quiz-option" onclick="wizSelect(1, 'erbschaft')">
+            <strong>Erbschaft &amp; Nachlass</strong>
+            <span>Ich habe eine Immobilie in Italien geerbt oder erwarte eine Erbschaft.</span>
+          </div>
+          <div class="quiz-option" onclick="wizSelect(1, 'steuern')">
+            <strong>Steuerfragen</strong>
+            <span>IMU, TARI, Doppelbesteuerung, Steuervorteile fuer Zuwanderer.</span>
+          </div>
+          <div class="quiz-option" onclick="wizSelect(1, 'mietrecht')">
+            <strong>Miet- &amp; Pachtrecht</strong>
+            <span>Probleme mit Mietern, Kuendigung, Sfratto, Mietvertraege.</span>
+          </div>
+          <div class="quiz-option" onclick="wizSelect(1, 'kataster')">
+            <strong>Grundbuch &amp; Kataster</strong>
+            <span>Abweichungen, fehlende Dokumente, Grenzstreitigkeiten.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Urgency -->
+      <div class="quiz-step" id="wiz_step2" style="display:none;">
+        <h2>Wie dringend ist Ihr Anliegen?</h2>
+        <p>Dies hilft uns, die richtige Prioritaet fuer Ihre Anfrage zu setzen.</p>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="wizSelect(2, 'hoch')">
+            <strong>Hoch <span class="badge badge-hoch">Dringend</span></strong>
+            <span>Fristen laufen, Vertrag steht bevor, oder es gibt ein akutes rechtliches Problem.</span>
+          </div>
+          <div class="quiz-option" onclick="wizSelect(2, 'mittel')">
+            <strong>Mittel <span class="badge badge-mittel">Planbar</span></strong>
+            <span>Kein unmittelbarer Zeitdruck, aber ich moechte zeitnah eine Loesung.</span>
+          </div>
+          <div class="quiz-option" onclick="wizSelect(2, 'niedrig')">
+            <strong>Niedrig <span class="badge badge-niedrig">Informativ</span></strong>
+            <span>Ich informiere mich vorab und plane langfristig.</span>
+          </div>
+        </div>
+        <a href="#" onclick="event.preventDefault();wizBack(2)" style="color:var(--white);font-size:0.85rem;text-decoration:none;display:inline-block;margin-top:20px;">&larr; Zurueck</a>
+      </div>
+
+      <!-- Step 3: Documents -->
+      <div class="quiz-step" id="wiz_step3" style="display:none;">
+        <h2>Haben Sie bereits Unterlagen?</h2>
+        <p>Dokumente wie Kaufvertrag, Visura Catastale, Grundbuchauszug etc.</p>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="wizSelect(3, 'ja')">
+            <strong>Ja</strong>
+            <span>Ich habe die relevanten Unterlagen vorliegen.</span>
+          </div>
+          <div class="quiz-option" onclick="wizSelect(3, 'teilweise')">
+            <strong>Teilweise</strong>
+            <span>Ich habe einige Dokumente, bin mir aber nicht sicher, ob alles vollstaendig ist.</span>
+          </div>
+          <div class="quiz-option" onclick="wizSelect(3, 'nein')">
+            <strong>Nein</strong>
+            <span>Ich habe noch keine Unterlagen oder weiss nicht, welche ich brauche.</span>
+          </div>
+        </div>
+        <a href="#" onclick="event.preventDefault();wizBack(3)" style="color:var(--white);font-size:0.85rem;text-decoration:none;display:inline-block;margin-top:20px;">&larr; Zurueck</a>
+      </div>
+
+      <!-- Step 4: Contact Form -->
+      <div class="quiz-step" id="wiz_step4" style="display:none;">
+        <h2 style="margin-bottom:8px;">Fast geschafft — Ihre Kontaktdaten</h2>
+        <p style="color:var(--text-muted); margin-bottom:24px;">Wir melden uns innerhalb von 48 Stunden bei Ihnen.</p>
+
+        <!-- Summary of selections -->
+        <div id="wiz_summary" class="result-card" style="margin-bottom:24px;"></div>
+
+        <form id="kontaktForm" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="kf_anrede">Anrede</label>
+              <select id="kf_anrede">
+                <option value="">-- Bitte waehlen --</option>
+                <option value="Herr">Herr</option>
+                <option value="Frau">Frau</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="kf_name">Vor- und Nachname *</label>
+              <input type="text" id="kf_name" placeholder="Max Mustermann" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="kf_email">E-Mail-Adresse *</label>
+              <input type="email" id="kf_email" placeholder="ihre@email.de" required>
+            </div>
+            <div class="form-group">
+              <label for="kf_telefon">Telefonnummer</label>
+              <input type="tel" id="kf_telefon" placeholder="+49 170 1234567">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="kf_region">Region (falls bekannt)</label>
+              <select id="kf_region">
+                <option value="">-- Optional --</option>
+                <option value="abruzzen">Abruzzen</option>
+                <option value="aostatal">Aostatal</option>
+                <option value="apulien">Apulien</option>
+                <option value="basilikata">Basilikata</option>
+                <option value="emilia-romagna">Emilia-Romagna</option>
+                <option value="friaul">Friaul-Julisch Venetien</option>
+                <option value="kalabrien">Kalabrien</option>
+                <option value="kampanien">Kampanien</option>
+                <option value="latium">Latium</option>
+                <option value="ligurien">Ligurien</option>
+                <option value="lombardei">Lombardei</option>
+                <option value="marken">Marken</option>
+                <option value="molise">Molise</option>
+                <option value="piemont">Piemont</option>
+                <option value="sardinien">Sardinien</option>
+                <option value="sizilien">Sizilien</option>
+                <option value="suedtirol">Suedtirol-Trentino</option>
+                <option value="toskana">Toskana</option>
+                <option value="umbrien">Umbrien</option>
+                <option value="venetien">Venetien</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="kf_budget">Budget (falls bekannt)</label>
+              <select id="kf_budget">
+                <option value="">-- Optional --</option>
+                <option value="unter-100000">Unter 100.000 EUR</option>
+                <option value="100000-200000">100.000 - 200.000 EUR</option>
+                <option value="200000-400000">200.000 - 400.000 EUR</option>
+                <option value="400000-700000">400.000 - 700.000 EUR</option>
+                <option value="ueber-700000">Ueber 700.000 EUR</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="kf_beschreibung">Beschreibung Ihres Anliegens</label>
+            <textarea id="kf_beschreibung" placeholder="Beschreiben Sie kurz Ihre Situation..."></textarea>
+          </div>
+
+          <div id="kf_unterlagen_hint" style="display:none; margin-bottom:16px;">
+            <div class="form-group">
+              <label for="kf_files" style="margin-bottom:8px; display:block;"><strong>Unterlagen hochladen</strong></label>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">Akzeptierte Formate: PDF, JPG, PNG, DOC, DOCX — max. 10 MB pro Datei</p>
+              <input type="file" id="kf_files" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" style="display:none;">
+              <button type="button" onclick="document.getElementById('kf_files').click()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:8px; padding:12px 18px; color:var(--white); font-size:0.85rem; cursor:pointer; font-family:'Cinzel',serif;">Dateien auswaehlen</button>
+              <span id="kf_files_label" style="margin-left:12px; font-size:0.85rem; color:var(--text-muted);">Keine Dateien ausgewaehlt</span>
+              <div id="kf_upload_status" style="margin-top:8px; font-size:0.8rem; color:var(--text-muted);"></div>
+            </div>
+          </div>
+
+          <div class="gdpr-check">
+            <input type="checkbox" id="kf_dsgvo" required>
+            <label for="kf_dsgvo">Ich stimme der Verarbeitung meiner personenbezogenen Daten gemaess der <a href="https://www.avvocatogolini.it/privacy/" target="_blank" rel="noopener" style="color:var(--white);cursor:pointer;">Datenschutzerklaerung</a> zu. Meine Daten werden ausschliesslich zur Bearbeitung meiner Anfrage verwendet. *</label>
+          </div>
+
+          <div id="kf_error" class="error-msg" style="text-align:center; margin-bottom:12px;"></div>
+          <button type="button" class="btn btn-primary btn-block" id="kf_submitBtn" onclick="submitKontaktForm()">Anfrage senden</button>
+          <div style="text-align:center; margin-top:12px;">
+            <a href="#" onclick="event.preventDefault();wizBack(4)" style="color:var(--white);font-size:0.85rem;text-decoration:none;">&larr; Zurueck</a>
+          </div>
+        </form>
+
+        <div id="kf_success" class="success-msg" style="margin-top:24px;">
+          <div class="checkmark">&#10003;</div>
+          <h3>Vielen Dank fuer Ihre Anfrage!</h3>
+          <p>Wir haben Ihre Nachricht erhalten und melden uns innerhalb von 48 Stunden bei Ihnen.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- /.main-container -->
+</section>
+
+<div id="leadModal" class="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" onclick="hideLeadModal()">&times;</button>
+      <div id="modalForm">
+        <h3>Ergebnisse per E-Mail erhalten</h3>
+        <p>Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen eine detaillierte Aufstellung zu.</p>
+        <div class="form-group">
+          <input type="text" id="modalName" placeholder="Ihr Name" style="margin-bottom:10px;">
+          <input type="email" id="modalEmail" placeholder="ihre@email.de">
+        </div>
+        <div class="gdpr-check">
+          <input type="checkbox" id="modalGdpr">
+          <label for="modalGdpr">Ich stimme der Verarbeitung meiner Daten gemaess der Datenschutzerklaerung zu.</label>
+        </div>
+        <div id="modalError" class="error-msg"></div>
+        <button id="modalSubmitBtn" class="btn btn-primary btn-block" onclick="submitLeadModal()">Absenden</button>
+      </div>
+      <div id="modalSuccess" class="success-msg">
+        <div class="checkmark">&#10003;</div>
+        <h3>Vielen Dank!</h3>
+        <p>Sie erhalten die detaillierten Ergebnisse in Kuerze per E-Mail.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ALL JAVASCRIPT
+       ============================================================ -->
+  <script>
+    // ============================================================
+    // CONFIG
+    // ============================================================
+    var WEBHOOK_URL = 'https://n8n-production-87eb.up.railway.app/webhook/lead-capture';
+    var CONTACT_URL = 'https://n8n-production-87eb.up.railway.app/webhook/lead-capture';
+    var NOTIFY_EMAIL = 'info@avvocatogolini.it';
+    var CLOUDINARY_CLOUD = 'dgk9zdsef';
+    var CLOUDINARY_PRESET = 'italien-immobilien.italienischeranwalt.com';
+    var ALLOWED_TYPES = ['application/pdf','image/jpeg','image/png','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    var MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+
+    // ============================================================
+    // TAB SWITCHING
+    // ============================================================
+    var activeTab = 'kostenrechner';
+
+    function switchTab(tabName) {
+      activeTab = tabName;
+      var btns = document.querySelectorAll('.tab-btn');
+      for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+      document.getElementById('tabBtn_' + tabName).classList.add('active');
+      var panels = document.querySelectorAll('.tab-panel');
+      for (var j = 0; j < panels.length; j++) panels[j].classList.remove('active');
+      document.getElementById('panel_' + tabName).classList.add('active');
+      window.scrollTo({ top: document.getElementById('tools').offsetTop - 80, behavior: 'smooth' });
+      // Reset wizard when entering Kontakt (if not already at step 4)
+      if (tabName === 'kontakt' && !wizData.unterlagen) wizReset();
+    }
+
+    // ============================================================
+    // HELPERS
+    // ============================================================
+    function formatEUR(amount) {
+      return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount);
+    }
+    function formatPercent(value) {
+      return new Intl.NumberFormat('de-DE', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 2 }).format(value);
+    }
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // ============================================================
+    // localStorage HELPERS
+    // ============================================================
+    function saveToStorage(key, val) {
+      try { localStorage.setItem('iit_' + key, JSON.stringify(val)); } catch(e) {}
+    }
+    function loadFromStorage(key) {
+      try { var v = localStorage.getItem('iit_' + key); return v ? JSON.parse(v) : null; } catch(e) { return null; }
+    }
+
+    // ============================================================
+    // KOSTENRECHNER
+    // ============================================================
+    function krCalculate() {
+      var kaufpreis = parseFloat(document.getElementById('kr_kaufpreis').value);
+      var typ = document.getElementById('kr_immobilientyp').value;
+      var region = document.getElementById('kr_region').value;
+      var statusEl = document.querySelector('input[name="kr_status"]:checked');
+      var verkaeuferEl = document.querySelector('input[name="kr_verkaeufer"]:checked');
+      var errorEl = document.getElementById('kr_formError');
+
+      if (!kaufpreis || kaufpreis <= 0) { errorEl.textContent = 'Bitte geben Sie einen gueltigen Kaufpreis ein.'; return; }
+      if (!typ) { errorEl.textContent = 'Bitte waehlen Sie den Immobilientyp.'; return; }
+      if (!region) { errorEl.textContent = 'Bitte waehlen Sie eine Region.'; return; }
+      if (!statusEl) { errorEl.textContent = 'Bitte waehlen Sie Ihren Kauferstatus.'; return; }
+      if (!verkaeuferEl) { errorEl.textContent = 'Bitte waehlen Sie den Verkaeufertyp.'; return; }
+      errorEl.textContent = '';
+
+      var verkaeufer = verkaeuferEl.value; // 'privat' oder 'unternehmen'
+      var isIVA = (verkaeufer === 'unternehmen');
+
+      var registersteuerRate, registersteuerLabel;
+      if (isIVA) {
+        // Kauf von Bautraeger/Unternehmen: MwSt./IVA
+        if (typ === 'erstwohnsitz') { registersteuerRate = 0.04; registersteuerLabel = 'MwSt./IVA (4% Erstwohnsitz)'; }
+        else if (typ === 'zweitwohnsitz') { registersteuerRate = 0.10; registersteuerLabel = 'MwSt./IVA (10%)'; }
+        else { registersteuerRate = 0.22; registersteuerLabel = 'MwSt./IVA (22%)'; }
+      } else {
+        // Kauf von Privatperson: Registersteuer
+        if (typ === 'erstwohnsitz') { registersteuerRate = 0.02; registersteuerLabel = 'Registersteuer (2%)'; }
+        else if (typ === 'zweitwohnsitz') { registersteuerRate = 0.09; registersteuerLabel = 'Registersteuer (9%)'; }
+        else { registersteuerRate = 0.09; registersteuerLabel = 'Registersteuer (9%)'; }
+      }
+
+      var registersteuer = kaufpreis * registersteuerRate;
+      // Fuer Privatkaeufe (Registersteuer): Mindestbetrag 1.000 EUR gemaess Art. 10 D.Lgs. 23/2011
+      if (!isIVA && registersteuer < 1000) registersteuer = 1000;
+
+      // IVA-Kauf: Registersteuer, Hypotheken- und Katastersteuer je 200 EUR pauschal = 600 EUR
+      // Privatkauf: nur Hypotheken- und Katastersteuer je 50 EUR pauschal = 100 EUR
+      var imposteFisse = isIVA ? 600 : 100;
+      var imposteFisseLabel = isIVA ? 'Register-, Hypotheken- und Katastersteuer (je 200 EUR pauschal bei MwSt.-Kauf)' : 'Hypotheken- und Katastersteuer (je 50 EUR pauschal)';
+
+      var notarRate = kaufpreis <= 500000 ? 0.01 : 0.005;
+      var notarkosten = Math.max(kaufpreis * notarRate, 2000);
+      var notarLabel = kaufpreis <= 500000 ? 'Notarkosten (ca. 1%)' : 'Notarkosten (ca. 0,5%)';
+
+      var maklerRate = 0.0366;
+      var maklerkosten = kaufpreis * maklerRate;
+      var uebersetzung = 1500;
+      var anwaltRate = 0.015;
+      var anwaltskosten = Math.max(kaufpreis * anwaltRate, 2000);
+      var anwaltLabel = anwaltskosten === 2000 ? 'Anwaltskosten (Min. 2.000)' : 'Anwaltskosten (1,5%)';
+
+      var gesamt = registersteuer + imposteFisse + notarkosten + maklerkosten + uebersetzung + anwaltskosten;
+      var gesamtMitKauf = kaufpreis + gesamt;
+
+      if (!isIVA && kaufpreis * registersteuerRate < 1000) registersteuerLabel += ' (Mindestbetrag)';
+
+      var rows = [
+        [registersteuerLabel, formatPercent(registersteuerRate), formatEUR(registersteuer)],
+        [imposteFisseLabel, 'Pauschal', formatEUR(imposteFisse)],
+        [notarLabel, formatPercent(notarRate), formatEUR(notarkosten)],
+        ['Maklergebuehren (3% + MwSt.)', '3,66%', formatEUR(maklerkosten)],
+        ['Uebersetzung & Apostille', 'Pauschal', formatEUR(uebersetzung)],
+        [anwaltLabel, formatPercent(anwaltRate), formatEUR(anwaltskosten)]
+      ];
+
+      var html = '';
+      rows.forEach(function(row) { html += '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td><td>' + row[2] + '</td></tr>'; });
+      html += '<tr class="total-row"><td>Nebenkosten gesamt</td><td></td><td>' + formatEUR(gesamt) + '</td></tr>';
+      html += '<tr class="total-row"><td><strong>Gesamtkosten inkl. Kaufpreis</strong></td><td></td><td><strong>' + formatEUR(gesamtMitKauf) + '</strong></td></tr>';
+      html += '<tr><td colspan="3" style="font-size:0.75rem; color:var(--text-muted); font-style:italic; padding-top:12px;">Die Prozentsaetze fuer Notar, Makler, Anwalt und Uebersetzung sind statistische Schaetzungen und stellen keinen Tarif oder ein Angebot dar. Die tatsaechlichen Honorare werden frei zwischen den Parteien vereinbart.</td></tr>';
+
+      document.getElementById('kr_resultsBody').innerHTML = html;
+      document.getElementById('kr_results').style.display = 'block';
+      document.getElementById('kr_results').scrollIntoView({ behavior: 'smooth' });
+
+      // Save to localStorage for form pre-fill
+      saveToStorage('calc_data', { kaufpreis: kaufpreis, typ: typ, region: region, status: statusEl.value, verkaeufer: verkaeufer });
+    }
+
+    // ============================================================
+    // STEUERRECHNER
+    // ============================================================
+    var SR_MULTIPLIERS = { 'wohnung': 160, 'haus': 160, 'gewerbe': 65, 'grundstueck': 135 };
+    var SR_TARI_ESTIMATES = { 'wohnung': 250, 'haus': 350, 'gewerbe': 400, 'grundstueck': 100 };
+    var SR_TYPE_LABELS = { 'wohnung': 'Wohnung', 'haus': 'Haus', 'gewerbe': 'Gewerbe', 'grundstueck': 'Grundstueck' };
+
+    function srCalculateTax() {
+      var rendita = parseFloat(document.getElementById('sr_rendita').value);
+      var typ = document.getElementById('sr_immobilientyp').value;
+      var erstwohnsitzEl = document.querySelector('input[name="sr_erstwohnsitz"]:checked');
+      var errorEl = document.getElementById('sr_formError');
+
+      if (!rendita || rendita <= 0) { errorEl.textContent = 'Bitte geben Sie den Katasterertrag ein.'; return; }
+      if (!typ) { errorEl.textContent = 'Bitte waehlen Sie den Immobilientyp.'; return; }
+      if (!erstwohnsitzEl) { errorEl.textContent = 'Bitte geben Sie an, ob es Ihr Erstwohnsitz ist.'; return; }
+      errorEl.textContent = '';
+
+      var isErstwohnsitz = erstwohnsitzEl.value === 'ja';
+      var multiplier = SR_MULTIPLIERS[typ];
+      var aliquota = 0.0086;
+
+      var imu = 0, imuDetails = '';
+      if (isErstwohnsitz) {
+        imu = 0; imuDetails = 'Befreit (Erstwohnsitz)';
+        document.getElementById('sr_exemptNote').style.display = 'block';
+      } else {
+        imu = rendita * 1.05 * multiplier * aliquota;
+        imuDetails = 'Rendita ' + formatEUR(rendita) + ' x 1,05 x ' + multiplier + ' x 0,86%';
+        document.getElementById('sr_exemptNote').style.display = 'none';
+      }
+
+      var tari = SR_TARI_ESTIMATES[typ];
+      var gesamt = imu + tari;
+
+      var html = '';
+      html += '<tr><td>IMU (Gemeindesteuer)</td><td>' + imuDetails + '</td><td>' + formatEUR(imu) + '</td></tr>';
+      html += '<tr><td>TARI (Abfallgebuehr)</td><td>Schaetzung fuer ' + SR_TYPE_LABELS[typ] + '</td><td>ca. ' + formatEUR(tari) + '</td></tr>';
+      html += '<tr class="total-row"><td><strong>Jaehrliche Gesamtbelastung</strong></td><td></td><td><strong>' + formatEUR(gesamt) + '</strong></td></tr>';
+
+      document.getElementById('sr_resultsBody').innerHTML = html;
+      document.getElementById('sr_results').style.display = 'block';
+      document.getElementById('sr_results').scrollIntoView({ behavior: 'smooth' });
+
+      saveToStorage('tax_data', { rendita: rendita, typ: typ, erstwohnsitz: erstwohnsitzEl.value });
+    }
+
+    // ============================================================
+    // TIMELINE — scroll animation
+    // ============================================================
+    function initTimeline() {
+      var items = document.querySelectorAll('.tl-item, .tl-cta');
+      if (!items.length) return;
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        items.forEach(function(item) { obs.observe(item); });
+      } else {
+        // Fallback: show all immediately
+        items.forEach(function(item) { item.classList.add('visible'); });
+      }
+    }
+
+    // ============================================================
+    // WIZARD (Kontakt: quiz steps + form)
+    // ============================================================
+    var wizData = { situation: '', dringlichkeit: '', unterlagen: '' };
+    var SITUATION_LABELS = {
+      'kauf': 'Immobilienkauf',
+      'bauprobleme': 'Bauliche Probleme (Abuso Edilizio)',
+      'erbschaft': 'Erbschaft & Nachlass',
+      'steuern': 'Steuerfragen',
+      'mietrecht': 'Miet- & Pachtrecht',
+      'kataster': 'Grundbuch & Kataster'
+    };
+    var DRINGLICH_LABELS = { 'hoch': 'Hoch', 'mittel': 'Mittel', 'niedrig': 'Niedrig' };
+    var DRINGLICH_BADGE = { 'hoch': 'badge-hoch', 'mittel': 'badge-mittel', 'niedrig': 'badge-niedrig' };
+
+    function wizUpdateDots(currentStep) {
+      for (var d = 1; d <= 4; d++) {
+        var dot = document.getElementById('wiz_dot' + d);
+        dot.className = 'quiz-progress-dot';
+        if (d < currentStep) dot.classList.add('done');
+        else if (d === currentStep) dot.classList.add('active');
+      }
+    }
+
+    function wizSelect(step, value) {
+      var stepEl = document.getElementById('wiz_step' + step);
+      stepEl.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+      event.currentTarget.classList.add('selected');
+
+      if (step === 1) wizData.situation = value;
+      if (step === 2) wizData.dringlichkeit = value;
+      if (step === 3) wizData.unterlagen = value;
+      saveToStorage('quiz', wizData);
+
+      setTimeout(function() {
+        stepEl.classList.remove('active');
+        stepEl.style.display = 'none';
+        var nextStep = step + 1;
+        wizUpdateDots(nextStep);
+        var next = document.getElementById('wiz_step' + nextStep);
+        next.style.display = '';
+        next.classList.add('active');
+        // If showing form (step 4), build summary and prefill
+        if (nextStep === 4) {
+          wizShowSummary();
+          prefillKontaktForm();
+        }
+      }, 300);
+    }
+
+    function wizShowSummary() {
+      var badge = DRINGLICH_BADGE[wizData.dringlichkeit] || '';
+      var html = '<h3>' + (SITUATION_LABELS[wizData.situation] || '') +
+        (wizData.dringlichkeit ? ' <span class="badge ' + badge + '">' + DRINGLICH_LABELS[wizData.dringlichkeit] + '</span>' : '') +
+        '</h3>';
+      html += '<p style="margin-top:8px;">Unterlagen: ' + ({ja:'Vorhanden',teilweise:'Teilweise',nein:'Nicht vorhanden'}[wizData.unterlagen] || '-') + '</p>';
+      document.getElementById('wiz_summary').innerHTML = html;
+      var hint = document.getElementById('kf_unterlagen_hint');
+      if (hint) {
+        hint.style.display = (wizData.unterlagen === 'ja' || wizData.unterlagen === 'teilweise') ? 'block' : 'none';
+      }
+    }
+
+    function wizBack(fromStep) {
+      var toStep = fromStep - 1;
+      if (toStep < 1) return;
+      var current = document.getElementById('wiz_step' + fromStep);
+      var prev = document.getElementById('wiz_step' + toStep);
+      current.style.display = 'none';
+      current.className = 'quiz-step';
+      prev.style.display = '';
+      prev.className = 'quiz-step active';
+      // Clear the selection data for the current step
+      if (fromStep === 2) wizData.dringlichkeit = '';
+      if (fromStep === 3) wizData.unterlagen = '';
+      if (fromStep === 4) { wizData.unterlagen = ''; }
+      // Remove selected state from current step options
+      current.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+      wizUpdateDots(toStep);
+    }
+
+    function wizReset() {
+      wizData = { situation: '', dringlichkeit: '', unterlagen: '' };
+      saveToStorage('quiz', null);
+      for (var i = 1; i <= 4; i++) {
+        var s = document.getElementById('wiz_step' + i);
+        s.style.display = (i === 1) ? '' : 'none';
+        s.className = 'quiz-step' + (i === 1 ? ' active' : '');
+        s.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+      }
+      wizUpdateDots(1);
+    }
+
+    // ============================================================
+    // LEAD CAPTURE MODAL
+    // ============================================================
+    var currentLeadSource = '';
+
+    function showLeadModal(source) {
+      currentLeadSource = source;
+      document.getElementById('leadModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function hideLeadModal() {
+      document.getElementById('leadModal').classList.remove('active');
+      document.body.style.overflow = '';
+      // Reset after animation
+      setTimeout(function() {
+        document.getElementById('modalForm').style.display = 'block';
+        document.getElementById('modalSuccess').style.display = 'none';
+        document.getElementById('modalName').value = '';
+        document.getElementById('modalEmail').value = '';
+        document.getElementById('modalGdpr').checked = false;
+        document.getElementById('modalError').textContent = '';
+      }, 300);
+    }
+
+    // Close modal on overlay click
+    document.getElementById('leadModal').addEventListener('click', function(e) {
+      if (e.target === this) hideLeadModal();
+    });
+
+    function submitLeadModal() {
+      var name = document.getElementById('modalName').value.trim();
+      var email = document.getElementById('modalEmail').value.trim();
+      var gdpr = document.getElementById('modalGdpr').checked;
+      var errorEl = document.getElementById('modalError');
+      var btn = document.getElementById('modalSubmitBtn');
+
+      if (!email) { errorEl.textContent = 'Bitte geben Sie Ihre E-Mail-Adresse ein.'; return; }
+      if (!validateEmail(email)) { errorEl.textContent = 'Bitte geben Sie eine gueltige E-Mail-Adresse ein.'; return; }
+      if (!gdpr) { errorEl.textContent = 'Bitte stimmen Sie der Datenschutzerklaerung zu.'; return; }
+      errorEl.textContent = '';
+
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet...';
+
+      var calcData = loadFromStorage('calc_data') || {};
+      var payload = {
+        email: email,
+        name: name,
+        source: currentLeadSource,
+        data: calcData,
+        timestamp: new Date().toISOString(),
+        gdpr_consent: true,
+        notify_to: NOTIFY_EMAIL,
+        notify_subject: 'Nuovo Lead DE — ' + currentLeadSource
+      };
+
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(function(err) { console.error('Webhook error:', err); }).finally(function() {
+        document.getElementById('modalForm').style.display = 'none';
+        document.getElementById('modalSuccess').style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Absenden';
+      });
+    }
+
+    // ============================================================
+    // KONTAKT FORM
+    // ============================================================
+    function prefillKontaktForm() {
+      var calcData = loadFromStorage('calc_data');
+      if (calcData) {
+        if (calcData.region) {
+          var regionSel = document.getElementById('kf_region');
+          for (var i = 0; i < regionSel.options.length; i++) {
+            if (regionSel.options[i].value === calcData.region) { regionSel.selectedIndex = i; break; }
+          }
+        }
+        if (calcData.kaufpreis) {
+          var budget = '';
+          var kp = calcData.kaufpreis;
+          if (kp < 100000) budget = 'unter-100000';
+          else if (kp < 200000) budget = '100000-200000';
+          else if (kp < 400000) budget = '200000-400000';
+          else if (kp < 700000) budget = '400000-700000';
+          else budget = 'ueber-700000';
+          var budgetSel = document.getElementById('kf_budget');
+          for (var j = 0; j < budgetSel.options.length; j++) {
+            if (budgetSel.options[j].value === budget) { budgetSel.selectedIndex = j; break; }
+          }
+        }
+      }
+    }
+
+    // Upload single file to Cloudinary, returns URL or null
+    function uploadFileToCloudinary(file) {
+      var formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', CLOUDINARY_PRESET);
+      formData.append('folder', 'immobilien-leads');
+      return fetch('https://api.cloudinary.com/v1_1/' + CLOUDINARY_CLOUD + '/auto/upload', {
+        method: 'POST',
+        body: formData
+      }).then(function(res) { return res.json(); })
+        .then(function(data) { return data.secure_url || null; })
+        .catch(function() { return null; });
+    }
+
+    async function submitKontaktForm() {
+      var name = document.getElementById('kf_name').value.trim();
+      var email = document.getElementById('kf_email').value.trim();
+      var dsgvo = document.getElementById('kf_dsgvo').checked;
+      var errorEl = document.getElementById('kf_error');
+      var btn = document.getElementById('kf_submitBtn');
+      var statusEl = document.getElementById('kf_upload_status');
+
+      if (!name) { errorEl.textContent = 'Bitte geben Sie Ihren Namen ein.'; return; }
+      if (!email) { errorEl.textContent = 'Bitte geben Sie Ihre E-Mail-Adresse ein.'; return; }
+      if (!validateEmail(email)) { errorEl.textContent = 'Bitte geben Sie eine gueltige E-Mail-Adresse ein.'; return; }
+      if (!dsgvo) { errorEl.textContent = 'Bitte stimmen Sie der Datenschutzerklaerung zu.'; return; }
+      errorEl.textContent = '';
+
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet...';
+
+      // Upload files to Cloudinary if any
+      var fileUrls = [];
+      var fileInput = document.getElementById('kf_files');
+      if (fileInput && fileInput.files.length > 0) {
+        var files = Array.from(fileInput.files);
+        // Validate files
+        for (var i = 0; i < files.length; i++) {
+          if (!ALLOWED_TYPES.includes(files[i].type)) {
+            errorEl.textContent = 'Nicht unterstuetztes Format: ' + files[i].name + '. Erlaubt: PDF, JPG, PNG, DOC, DOCX.';
+            btn.disabled = false;
+            btn.textContent = 'Anfrage senden';
+            return;
+          }
+          if (files[i].size > MAX_FILE_SIZE) {
+            errorEl.textContent = files[i].name + ' ist zu gross (max. 10 MB).';
+            btn.disabled = false;
+            btn.textContent = 'Anfrage senden';
+            return;
+          }
+        }
+        if (statusEl) statusEl.textContent = 'Dateien werden hochgeladen (' + files.length + ')...';
+        btn.textContent = 'Dateien hochladen...';
+        for (var j = 0; j < files.length; j++) {
+          if (statusEl) statusEl.textContent = 'Hochladen: ' + files[j].name + ' (' + (j+1) + '/' + files.length + ')';
+          var url = await uploadFileToCloudinary(files[j]);
+          if (url) fileUrls.push(url);
+        }
+        if (statusEl) statusEl.textContent = fileUrls.length + ' von ' + files.length + ' Dateien hochgeladen.';
+        btn.textContent = 'Wird gesendet...';
+      }
+
+      var payload = {
+        email: email,
+        name: name,
+        anrede: document.getElementById('kf_anrede').value,
+        telefon: document.getElementById('kf_telefon').value.trim(),
+        source: 'kontakt-form',
+        data: {
+          situation: wizData.situation || '',
+          region: document.getElementById('kf_region').value,
+          budget: document.getElementById('kf_budget').value,
+          beschreibung: document.getElementById('kf_beschreibung').value.trim(),
+          unterlagen: wizData.unterlagen || '',
+          dringlichkeit: wizData.dringlichkeit || '',
+          dateien: fileUrls
+        },
+        timestamp: new Date().toISOString(),
+        gdpr_consent: true,
+        notify_to: NOTIFY_EMAIL,
+        notify_subject: 'Nuovo Lead DE — Kontaktformular'
+      };
+
+      fetch(CONTACT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(function(err) { console.error('Webhook error:', err); }).finally(function() {
+        btn.disabled = false;
+        btn.textContent = 'Anfrage senden';
+        document.getElementById('wiz_step4').querySelector('form').style.display = 'none';
+        document.getElementById('wiz_summary').style.display = 'none';
+        document.getElementById('wiz_step4').querySelector('h2').style.display = 'none';
+        document.getElementById('wiz_step4').querySelector('p').style.display = 'none';
+        document.getElementById('kf_success').style.display = 'block';
+      });
+    }
+
+    // ============================================================
+    // PDF LEAD MAGNET FORM
+    // ============================================================
+    // submitPdfForm rimossa — il leitfaden è ora incluso nel pacchetto LexHaus (download diretto)
+
+    // ============================================================
+    // INIT ON LOAD
+    // ============================================================
+    window.addEventListener('DOMContentLoaded', function() {
+      initTimeline();
+      document.getElementById('kf_files').addEventListener('change', function() {
+        var label = document.getElementById('kf_files_label');
+        if (this.files.length === 0) {
+          label.textContent = 'Keine Dateien ausgewaehlt';
+        } else if (this.files.length === 1) {
+          label.textContent = this.files[0].name;
+        } else {
+          label.textContent = this.files.length + ' Dateien ausgewaehlt';
+        }
+      });
+    });
+
+    // ============================================================
+    //  QUICK CHECK QUIZ (Probleme tab)
+    // ============================================================
+    var qcAnswers = {};
+    var qcTotal = 5;
+
+    function qcUpdateProgress() {
+      var count = Object.keys(qcAnswers).length;
+      var bar = document.getElementById('qcProgressBar');
+      var text = document.getElementById('qcProgressText');
+      if (bar) bar.style.width = (count / qcTotal * 100) + '%';
+      if (text) text.textContent = count + ' von ' + qcTotal + ' beantwortet';
+    }
+
+    function qcAnswer(btn) {
+      var q = btn.getAttribute('data-q');
+      var a = btn.getAttribute('data-a');
+      qcAnswers[q] = a;
+      // Highlight selected button, reset sibling
+      var siblings = btn.parentElement.querySelectorAll('.qc-btn');
+      for (var i = 0; i < siblings.length; i++) {
+        siblings[i].style.background = 'transparent';
+        siblings[i].style.color = 'var(--text)';
+        siblings[i].style.borderColor = 'rgba(255,255,255,0.3)';
+      }
+      btn.style.background = 'rgba(232,128,106,0.25)';
+      btn.style.color = '#E8806A';
+      btn.style.borderColor = '#E8806A';
+      // Update progress
+      qcUpdateProgress();
+      // Check if all 5 answered
+      if (Object.keys(qcAnswers).length === qcTotal) {
+        qcEvaluate();
+      }
+    }
+
+    function qcReset() {
+      qcAnswers = {};
+      // Reset all buttons
+      var btns = document.querySelectorAll('.qc-btn');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].style.background = 'transparent';
+        btns[i].style.color = 'var(--text)';
+        btns[i].style.borderColor = 'rgba(255,255,255,0.3)';
+      }
+      // Hide results
+      document.getElementById('qcResult').style.display = 'none';
+      document.getElementById('qcNoRisk').style.display = 'none';
+      // Reset all accordions
+      for (var p = 1; p <= 6; p++) {
+        var el = document.getElementById('problem_' + p);
+        if (el) {
+          el.style.border = '1px solid rgba(255,255,255,0.15)';
+          el.style.boxShadow = 'none';
+          el.style.opacity = '1';
+          el.classList.remove('open');
+          // Remove badge if exists
+          var badge = el.querySelector('.qc-badge');
+          if (badge) badge.remove();
+        }
+      }
+      // Reset progress
+      qcUpdateProgress();
+    }
+
+    function qcEvaluate() {
+      var hits = [];
+      var hitIds = {};
+      // Q1=yes -> Problem 1
+      if (qcAnswers['1'] === 'yes') { hits.push({id:'problem_1', label:'Bauliche Probleme (Abuso Edilizio)'}); hitIds['problem_1'] = true; }
+      // Q2=yes -> Problem 2
+      if (qcAnswers['2'] === 'yes') { hits.push({id:'problem_2', label:'Erbschaft und Nachlass (Successione)'}); hitIds['problem_2'] = true; }
+      // Q3=yes -> Problem 3 + 6
+      if (qcAnswers['3'] === 'yes') {
+        hits.push({id:'problem_3', label:'Eigent\u00fcmergemeinschaft (Condominio)'}); hitIds['problem_3'] = true;
+        hits.push({id:'problem_6', label:'Miet- und Pachtprobleme'}); hitIds['problem_6'] = true;
+      }
+      // Q4=no -> Problem 4
+      if (qcAnswers['4'] === 'no') { hits.push({id:'problem_4', label:'Grundbuch- und Katasterprobleme'}); hitIds['problem_4'] = true; }
+      // Q5=yes -> Problem 5
+      if (qcAnswers['5'] === 'yes') { hits.push({id:'problem_5', label:'Steuerfragen und R\u00fcckst\u00e4nde'}); hitIds['problem_5'] = true; }
+
+      var resultBox = document.getElementById('qcResult');
+      var noRiskBox = document.getElementById('qcNoRisk');
+      var resultList = document.getElementById('qcResultList');
+
+      // Reset all problem styles and remove old badges
+      for (var p = 1; p <= 6; p++) {
+        var el = document.getElementById('problem_' + p);
+        if (el) {
+          el.style.border = '1px solid rgba(255,255,255,0.15)';
+          el.style.boxShadow = 'none';
+          el.style.opacity = '1';
+          el.style.transition = 'all 0.4s ease';
+          el.classList.remove('open');
+          var oldBadge = el.querySelector('.qc-badge');
+          if (oldBadge) oldBadge.remove();
+        }
+      }
+
+      if (hits.length === 0) {
+        resultBox.style.display = 'none';
+        noRiskBox.style.display = 'block';
+        // Smooth scroll to result
+        setTimeout(function() { noRiskBox.scrollIntoView({behavior:'smooth', block:'center'}); }, 100);
+      } else {
+        noRiskBox.style.display = 'none';
+        resultBox.style.display = 'block';
+        resultList.innerHTML = '';
+        for (var i = 0; i < hits.length; i++) {
+          var li = document.createElement('li');
+          li.textContent = hits[i].label;
+          li.style.marginBottom = '4px';
+          resultList.appendChild(li);
+          // Highlight + auto-open matching accordion
+          var problemEl = document.getElementById(hits[i].id);
+          if (problemEl) {
+            problemEl.style.border = '1px solid rgba(232,128,106,0.5)';
+            problemEl.style.boxShadow = '0 0 16px rgba(232,128,106,0.2)';
+            problemEl.classList.add('open');
+            // Add "Betrifft Sie" badge
+            var header = problemEl.querySelector('.accordion-header > div');
+            if (header && !header.querySelector('.qc-badge')) {
+              var badge = document.createElement('span');
+              badge.className = 'qc-badge';
+              badge.textContent = 'Betrifft Sie';
+              badge.style.cssText = 'display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.72rem;font-weight:700;margin-left:10px;background:rgba(232,128,106,0.25);color:#E8806A;';
+              header.appendChild(badge);
+            }
+          }
+        }
+        // Dim non-matching accordions
+        for (var p = 1; p <= 6; p++) {
+          var id = 'problem_' + p;
+          if (!hitIds[id]) {
+            var dimEl = document.getElementById(id);
+            if (dimEl) dimEl.style.opacity = '0.4';
+          }
+        }
+        // Scroll to first matching accordion
+        setTimeout(function() {
+          var first = document.getElementById(hits[0].id);
+          if (first) first.scrollIntoView({behavior:'smooth', block:'start'});
+        }, 300);
+      }
+    }
+  </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/lexhaus/app/sw.js').catch(() => {});
+    }
+  </script>
+
 
 <!-- FOOTER -->
 <section class="footer-section">
