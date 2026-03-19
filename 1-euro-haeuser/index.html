@@ -115,11 +115,52 @@
     .footer-social a{color:rgba(255,255,255,0.5);transition:color 0.2s}
     .footer-social a:hover{color:var(--white)}
 
+    /* ICON BAR */
+    .icon-bar-hero{display:none}
+    .marquee{overflow:hidden;position:relative}
+    .marquee-track{display:flex;width:max-content}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .icon-bar-item{text-align:center;flex-shrink:0}
+    .icon-bar-item img{object-fit:contain}
+    .icon-bar-item span{display:none}
+
     @media(max-width:768px){
-      .hero{min-height:35vh}
-      .hero-content h1{font-size:1.8rem}
+      /* HERO MOBILE — fullscreen foto verticale */
+      .hero{
+        background-image:url('/1-euro-haeuser/img/hero-mobile.png')!important;
+        background-size:cover!important;
+        background-position:center center!important;
+        min-height:100vh!important;min-height:100svh!important;
+        align-items:flex-start!important;
+        padding:20px 0 0!important;
+      }
+      .hero::before{
+        background:linear-gradient(180deg,
+          rgba(0,20,49,0.75) 0%,
+          rgba(0,20,49,0.35) 35%,
+          rgba(0,20,49,0.1) 55%,
+          rgba(0,20,49,0.2) 100%)!important;
+      }
+      .hero-content{text-align:left;padding-bottom:0}
+      .hero-content h1{font-size:1.4rem;margin-bottom:8px}
+      .hero-content p{font-size:0.75rem;margin-bottom:16px}
+      .hero-content .btn{padding:10px 24px;font-size:0.7rem}
+
+      /* ICON BAR MOBILE */
+      .icon-bar-hero{
+        display:block!important;
+        margin-top:-140px;
+        padding:0 0 20px;
+        position:relative;z-index:5;
+      }
+      .marquee-track{animation:marquee 25s linear infinite}
+      .icon-bar-item{width:130px;padding:0 10px}
+      .icon-bar-item img{width:85px;height:85px}
+
       .section{padding:40px 0}
       .section-title{font-size:1.5rem}
+      .info-layout{grid-template-columns:1fr}
+      .info-grid{grid-template-columns:1fr}
       .info-left h2{font-size:1.4rem}
       .footer-grid{grid-template-columns:1fr}
       .map-section{padding:40px 0}
@@ -156,6 +197,31 @@
     <div class="hero-content">
       <h1>Haus in Italien ab 1&euro;</h1>
       <p>Ein echtes kommunales Projekt &ndash; keine Mythen, keine Werbung, sondern klare Regeln f&uuml;r EU-B&uuml;rger.</p>
+      <a href="#kontakt" class="btn btn-outline">Kontakt aufnehmen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ICON BAR -->
+<section class="icon-bar-hero">
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="icon-bar-item"><img src="/img/bar/15.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/16.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/17.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/18.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/19.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/20.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/21.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/22.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/15.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/16.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/17.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/18.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/19.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/20.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/21.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/22.svg" alt=""></div>
     </div>
   </div>
 </section>

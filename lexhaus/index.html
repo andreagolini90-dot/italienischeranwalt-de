@@ -79,7 +79,47 @@
     .footer-social a{color:rgba(255,255,255,0.5);transition:color 0.2s}
     .footer-social a:hover{color:var(--white)}
 
+    /* ICON BAR */
+    .icon-bar-hero{display:none}
+    .marquee{overflow:hidden;position:relative}
+    .marquee-track{display:flex;width:max-content}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .icon-bar-item{text-align:center;flex-shrink:0}
+    .icon-bar-item img{object-fit:contain}
+    .icon-bar-item span{display:none}
+
     @media(max-width:768px){
+      /* HERO MOBILE — fullscreen */
+      .hero{
+        background-size:cover!important;
+        background-position:center center!important;
+        min-height:100vh!important;min-height:100svh!important;
+        padding:20px 0 0!important;
+        text-align:left!important;
+      }
+      .hero::before{
+        background:linear-gradient(180deg,
+          rgba(0,20,49,0.8) 0%,
+          rgba(0,20,49,0.5) 35%,
+          rgba(0,20,49,0.3) 55%,
+          rgba(0,20,49,0.4) 100%)!important;
+      }
+      .hero h1{font-size:1.4rem!important;text-align:left}
+      .hero p{font-size:0.75rem!important;text-align:left}
+      .hero .sub{font-size:0.7rem!important;text-align:left}
+      .hero .btn{padding:10px 24px!important;font-size:0.7rem!important}
+
+      /* ICON BAR MOBILE */
+      .icon-bar-hero{
+        display:block!important;
+        margin-top:-140px;
+        padding:0 0 20px;
+        position:relative;z-index:5;
+      }
+      .marquee-track{animation:marquee 25s linear infinite}
+      .icon-bar-item{width:130px;padding:0 10px}
+      .icon-bar-item img{width:85px;height:85px}
+
       .hero h1{font-size:1.8rem}
       .hero{padding:80px 0 50px}
       .section{padding:40px 0}
@@ -1472,6 +1512,30 @@
     <p>Berechnen Sie alle Nebenkosten, pr&uuml;fen Sie Steuern, verfolgen Sie jeden Schritt und erkennen Sie rechtliche Fallstricke &ndash; bevor sie Sie Geld kosten.</p>
     <p class="sub">Entwickelt von Studio Legale Golini &ndash; &uuml;ber 20 Jahre Erfahrung im italienischen Immobilienrecht f&uuml;r K&auml;ufer aus DE/AT/CH.</p>
     <a href="#lexhaus-tool" class="btn btn-main">LexHaus kostenlos starten</a>
+  </div>
+</section>
+
+<!-- ICON BAR -->
+<section class="icon-bar-hero">
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="icon-bar-item"><img src="/img/bar/15.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/16.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/17.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/18.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/19.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/20.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/21.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/22.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/15.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/16.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/17.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/18.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/19.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/20.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/21.svg" alt=""></div>
+      <div class="icon-bar-item"><img src="/img/bar/22.svg" alt=""></div>
+    </div>
   </div>
 </section>
 
