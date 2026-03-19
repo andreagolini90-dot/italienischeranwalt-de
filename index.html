@@ -166,32 +166,33 @@
       .nav-links.active{display:flex}
       .nav-toggle{display:block}
 
-      /* HERO — stile OnePage: testo su, foto persone visibili, icone sopra foto, CTA in basso */
+      /* HERO — foto COVER tutta la hero, testo in cima, CTA piccolo */
       .hero{
-        padding:30px 0 0;
-        min-height:auto;
-        background-size:170% auto!important;
-        background-position:80% bottom!important;
+        padding:20px 0 0;
+        min-height:100vh;min-height:100svh;
+        background-size:cover!important;
+        background-position:70% center!important;
         background-repeat:no-repeat!important;
-        padding-bottom:300px;
-        display:block;
+        padding-bottom:0;
+        align-items:flex-start!important;
       }
       .hero::before{
         background:linear-gradient(180deg,
-          var(--navy) 0%,
-          rgba(0,20,49,0.9) 25%,
-          rgba(0,20,49,0.35) 55%,
-          rgba(0,20,49,0.2) 75%,
-          rgba(0,20,49,0.3) 100%)!important;
+          rgba(0,20,49,0.8) 0%,
+          rgba(0,20,49,0.45) 35%,
+          rgba(0,20,49,0.15) 55%,
+          rgba(0,20,49,0.25) 100%)!important;
       }
       .hero-content{grid-template-columns:1fr}
-      .hero-text{padding-bottom:20px}
-      .hero h1{font-size:1.5rem}
+      .hero-text{padding-bottom:0;padding-top:10px}
+      .hero h1{font-size:1.4rem;margin-bottom:8px}
+      .hero p{font-size:0.75rem;margin-bottom:16px}
+      .hero .btn{padding:10px 24px;font-size:0.7rem;letter-spacing:1px}
 
-      /* ICON BAR — overlap su hero, no marquee, scroll orizzontale */
+      /* ICON BAR — sovrapposta sulla hero, scorre orizzontalmente con label */
       .icon-bar-hero{
-        margin-top:-180px;
-        padding:10px 0 16px;
+        margin-top:-100px;
+        padding:0 0 10px;
         position:relative;
         z-index:5;
       }
@@ -203,9 +204,9 @@
       }
       .icon-bar-hero .marquee-track::-webkit-scrollbar{display:none}
       .icon-bar-hero .marquee .icon-bar-item:nth-child(n+9){display:none}
-      .icon-bar-item{width:110px;padding:0 8px;flex-shrink:0}
-      .icon-bar-item img{width:65px;height:65px}
-      .icon-bar-item span{display:block!important;font-size:0.55rem;color:#fff;margin-top:4px}
+      .icon-bar-item{width:105px;padding:0 6px;flex-shrink:0}
+      .icon-bar-item img{width:55px;height:55px}
+      .icon-bar-item span{display:none!important}
 
       .section{padding:40px 0}
       .section-title{font-size:1.6rem}
