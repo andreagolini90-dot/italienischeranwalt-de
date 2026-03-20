@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/kostenrechner/:path*", "destination": "/lexhaus/:path*" }
+  ],
+  "redirects": [
+    { "source": "/lexhaus/:path*", "destination": "/kostenrechner/:path*", "permanent": true }
+  ]
+}
