@@ -605,6 +605,7 @@ document.getElementById('stats')&&statsObserver.observe(document.getElementById(
       if(!r.ok)throw new Error();
       window.dataLayer=window.dataLayer||[];
       window.dataLayer.push({event:'lead_form_success'});
+      if(typeof fbq==='function') fbq('track','Lead');
       form.style.display='none';
       successBox.style.display='block';
     }catch(err){
