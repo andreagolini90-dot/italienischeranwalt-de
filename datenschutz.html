@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Datenschutzerkl&auml;rung — LexHaus | Studio Legale Golini</title>
-  <link rel="icon" type="image/png" href="lexhaus-logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Datenschutzerkl&auml;rung — italienischeranwalt.de | Studio Legale Golini</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root { --primary: #001431; --gold: #B8A472; --white: #fff; --text: rgba(255,255,255,0.85); }
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Source Sans 3',sans-serif; background:var(--primary); color:var(--text); line-height:1.8; padding:60px 20px; }
+    body { font-family:'Cinzel',Georgia,serif; background:var(--primary); color:var(--text); line-height:1.8; padding:60px 20px; }
     .container { max-width:720px; margin:0 auto; }
     h1 { font-family:'Playfair Display',serif; font-size:2rem; font-weight:900; color:var(--white); margin-bottom:32px; }
     h2 { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--gold); margin:28px 0 12px; }
@@ -23,7 +23,7 @@
 </head>
 <body>
   <div class="container">
-    <a href="./" class="back">&larr; Zur&uuml;ck zu LexHaus</a>
+    <a href="./" class="back">&larr; Zur&uuml;ck zur Startseite</a>
     <h1>Datenschutzerkl&auml;rung</h1>
 
     <h2>1. Verantwortlicher</h2>
@@ -36,7 +36,7 @@
     </p>
 
     <h2>2. Erhobene Daten</h2>
-    <p>Beim Besuch unserer Website und bei der Nutzung von LexHaus werden folgende Daten verarbeitet:</p>
+    <p>Beim Besuch unserer Website werden folgende Daten verarbeitet:</p>
 
     <h3>a) Automatisch erhobene Daten (Server-Logfiles)</h3>
     <ul>
@@ -47,42 +47,67 @@
     </ul>
     <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technischen Bereitstellung).</p>
 
-    <h3>b) Zahlungsdaten (Stripe)</h3>
-    <p>F&uuml;r die Abwicklung des Kaufs nutzen wir den Zahlungsdienstleister Stripe, Inc. (354 Oyster Point Blvd, South San Francisco, CA 94080, USA). Stripe verarbeitet Ihre Zahlungsdaten (Kartennummer, Ablaufdatum, CVC) direkt. Wir haben keinen Zugriff auf Ihre vollst&auml;ndigen Zahlungsdaten.</p>
-    <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&uuml;llung).<br>
-    Datenschutzerkl&auml;rung von Stripe: <a href="https://stripe.com/de/privacy" target="_blank" rel="noopener">stripe.com/de/privacy</a></p>
-
-    <h3>c) Kontaktformular</h3>
-    <p>Wenn Sie uns &uuml;ber das Kontaktformular in LexHaus kontaktieren, werden folgende Daten erhoben:</p>
+    <h3>b) Kontaktformular</h3>
+    <p>Wenn Sie uns &uuml;ber das Kontaktformular kontaktieren, werden folgende Daten erhoben:</p>
     <ul>
       <li>Name, E-Mail-Adresse</li>
-      <li>Anrede, Telefonnummer (optional)</li>
-      <li>Ihre Nachricht und ggf. hochgeladene Dokumente</li>
+      <li>Telefonnummer (optional)</li>
+      <li>Ihre Nachricht</li>
     </ul>
+    <p>Die Daten werden &uuml;ber einen gesicherten Webhook an unseren Automatisierungsdienst (n8n, gehostet auf Railway, EU) &uuml;bermittelt und in Google Sheets gespeichert. Eine Benachrichtigung erfolgt per E-Mail.</p>
     <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Ma&szlig;nahmen).</p>
 
-    <h2>3. Google Fonts</h2>
+    <h2>3. Google Analytics (GA4)</h2>
+    <p>Diese Website nutzt Google Analytics 4 (Mess-ID: G-LJC2S4YLT4), einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Google Analytics verwendet Cookies und &auml;hnliche Technologien, um Ihr Nutzungsverhalten zu analysieren.</p>
+    <p>Die erzeugten Informationen werden in der Regel an einen Server von Google in den USA &uuml;bertragen und dort gespeichert. Die IP-Anonymisierung ist aktiviert.</p>
+    <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Websiteanalyse).</p>
+    <p>Datenschutzerkl&auml;rung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a><br>
+    Opt-Out: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-Out Browser Add-On</a></p>
+
+    <h2>4. Google Ads</h2>
+    <p>Diese Website nutzt Google Ads Conversion Tracking (Kunden-ID: 387-065-0666). Wenn Sie &uuml;ber eine Google-Anzeige auf unsere Website gelangen, wird von Google Ads ein Cookie auf Ihrem Rechner gesetzt. Dieses Cookie dient dazu, den Erfolg unserer Werbeanzeigen zu messen.</p>
+    <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Erfolgsmessung).</p>
+    <p>Weitere Informationen: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Ads Datenschutz</a></p>
+
+    <h2>5. Meta Pixel (Facebook)</h2>
+    <p>Diese Website nutzt das Meta Pixel (Pixel-ID: 1262856971877847), einen Dienst der Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland. Das Meta Pixel setzt Cookies und erfasst Daten &uuml;ber Ihr Nutzungsverhalten auf unserer Website.</p>
+    <p>Folgende Ereignisse werden erfasst:</p>
+    <ul>
+      <li><strong>PageView</strong> &mdash; beim Laden jeder Seite</li>
+      <li><strong>Lead</strong> &mdash; beim erfolgreichen Absenden des Kontaktformulars</li>
+    </ul>
+    <p>Die erfassten Daten werden an Meta &uuml;bermittelt und k&ouml;nnen f&uuml;r zielgerichtete Werbung (Remarketing) genutzt werden.</p>
+    <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an effektiver Werbung).</p>
+    <p>Datenschutzerkl&auml;rung: <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta Datenschutzrichtlinie</a><br>
+    Widerspruch: <a href="https://www.facebook.com/settings?tab=ads" target="_blank" rel="noopener">Facebook Werbeeinstellungen</a></p>
+
+    <h2>6. Google Fonts</h2>
     <p>Diese Website nutzt Google Fonts zur Darstellung von Schriftarten. Beim Aufruf der Seite wird eine Verbindung zu Servern von Google LLC hergestellt. Dabei wird Ihre IP-Adresse an Google &uuml;bermittelt.</p>
     <p>Datenschutzerkl&auml;rung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
 
-    <h2>4. Google Maps</h2>
-    <p>In unserem Footer binden wir Google Maps ein, um den Standort unserer Kanzlei anzuzeigen. Beim Laden der Karte werden Daten an Google LLC &uuml;bertragen.</p>
+    <h2>7. Cookies</h2>
+    <p>Diese Website verwendet Cookies und &auml;hnliche Technologien von folgenden Diensten:</p>
+    <ul>
+      <li><strong>Google Analytics</strong> &mdash; Analyse-Cookies zur Erfassung des Nutzungsverhaltens</li>
+      <li><strong>Google Ads</strong> &mdash; Conversion-Tracking-Cookies</li>
+      <li><strong>Meta Pixel</strong> &mdash; Tracking-Cookies f&uuml;r Werbezwecke</li>
+      <li><strong>LocalStorage</strong> &mdash; Speicherung des Zugangsstatus (keine personenbezogenen Daten)</li>
+    </ul>
+    <p>Sie k&ouml;nnen Cookies in Ihren Browser-Einstellungen deaktivieren oder l&ouml;schen. Beachten Sie, dass einige Funktionen der Website m&ouml;glicherweise nicht mehr vollst&auml;ndig verf&uuml;gbar sind.</p>
 
-    <h2>5. Cookies und LocalStorage</h2>
-    <p>LexHaus verwendet <strong>keine Tracking-Cookies</strong>. Es wird lediglich ein LocalStorage-Eintrag gesetzt, um Ihren Zugangsstatus zu speichern (damit Sie das Passwort nicht bei jedem Besuch erneut eingeben m&uuml;ssen). Dieser Eintrag enth&auml;lt keine personenbezogenen Daten.</p>
-
-    <h2>6. Datenweitergabe an Dritte</h2>
+    <h2>8. Datenweitergabe an Dritte</h2>
     <p>Eine Weitergabe Ihrer Daten an Dritte erfolgt nur:</p>
     <ul>
-      <li>An Stripe, Inc. zur Zahlungsabwicklung</li>
-      <li>An Google LLC f&uuml;r Fonts und Maps</li>
+      <li>An Google LLC f&uuml;r Analytics, Ads und Fonts</li>
+      <li>An Meta Platforms Ireland Limited f&uuml;r das Meta Pixel</li>
+      <li>An unseren Automatisierungsdienst (n8n/Railway) f&uuml;r die Verarbeitung von Kontaktanfragen</li>
       <li>Wenn wir gesetzlich dazu verpflichtet sind</li>
     </ul>
 
-    <h2>7. Speicherdauer</h2>
-    <p>Kontaktanfragen werden f&uuml;r die Dauer der Mandatsanbahnung bzw. maximal 12 Monate gespeichert. Zahlungsdaten werden gem&auml;&szlig; den gesetzlichen Aufbewahrungsfristen (10 Jahre) aufbewahrt.</p>
+    <h2>9. Speicherdauer</h2>
+    <p>Kontaktanfragen werden f&uuml;r die Dauer der Mandatsanbahnung bzw. maximal 12 Monate gespeichert. Analytics- und Tracking-Daten werden gem&auml;&szlig; den Standardeinstellungen der jeweiligen Dienste gespeichert.</p>
 
-    <h2>8. Ihre Rechte</h2>
+    <h2>10. Ihre Rechte</h2>
     <p>Sie haben das Recht auf:</p>
     <ul>
       <li><strong>Auskunft</strong> &uuml;ber Ihre gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -94,13 +119,13 @@
     </ul>
     <p>Zur Aus&uuml;bung Ihrer Rechte wenden Sie sich an: <a href="mailto:info@avvocatogolini.it">info@avvocatogolini.it</a></p>
 
-    <h2>9. Beschwerderecht</h2>
+    <h2>11. Beschwerderecht</h2>
     <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbeh&ouml;rde zu beschweren. Die f&uuml;r Italien zust&auml;ndige Beh&ouml;rde ist der Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>).</p>
 
-    <h2>10. &Auml;nderungen</h2>
+    <h2>12. &Auml;nderungen</h2>
     <p>Wir behalten uns vor, diese Datenschutzerkl&auml;rung bei Bedarf anzupassen. Die aktuelle Fassung finden Sie stets auf dieser Seite.</p>
 
-    <p style="margin-top:32px; color:rgba(255,255,255,0.4); font-size:0.85rem;">Stand: Februar 2026</p>
+    <p style="margin-top:32px; color:rgba(255,255,255,0.4); font-size:0.85rem;">Stand: M&auml;rz 2026</p>
   </div>
 </body>
 </html>
