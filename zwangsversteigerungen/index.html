@@ -686,7 +686,7 @@ document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('clic
     submitBtn.disabled=true;
     submitBtn.innerText='Wird gesendet...';
     try{
-      const r=await fetch('https://trovaaste-production.up.railway.app/api/contatti',{
+      const r=await fetch('https://n8n-production-87eb.up.railway.app/webhook/lead-capture',{
         method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({nome:form.vorname.value+' '+(form.nachname.value||''),email:form.email.value,telefono:form.telefon.value,oggetto:'Anfrage Zwangsversteigerungen',messaggio:form.nachricht.value,pagina:'italienischeranwalt.de/zwangsversteigerungen'})
       });
