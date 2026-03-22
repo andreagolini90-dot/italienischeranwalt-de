@@ -2758,6 +2758,9 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       }).catch(function(err) { console.error('Webhook error:', err); }).finally(function() {
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'lead_form_success'});
+        if(typeof fbq==='function') fbq('track','Lead');
         document.getElementById('modalForm').style.display = 'none';
         document.getElementById('modalSuccess').style.display = 'block';
         btn.disabled = false;
@@ -2883,6 +2886,9 @@
       }).catch(function(err) { console.error('Webhook error:', err); }).finally(function() {
         btn.disabled = false;
         btn.textContent = 'Anfrage senden';
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'lead_form_success'});
+        if(typeof fbq==='function') fbq('track','Lead');
         document.getElementById('wiz_step4').querySelector('form').style.display = 'none';
         document.getElementById('wiz_summary').style.display = 'none';
         document.getElementById('wiz_step4').querySelector('h2').style.display = 'none';
